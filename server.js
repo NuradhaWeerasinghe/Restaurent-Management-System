@@ -7,14 +7,15 @@ const app = express();
 
 //import routes
 const employeeRoutes = require('./routes/employees');
-
+const postRoutes = require('./routes/posts');
+const { Router } = require('express');
 //app middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 //roote middleware
 app.use(employeeRoutes);
-
+app.use(postRoutes);
 
 
 const PORT = 8000;// sever port
