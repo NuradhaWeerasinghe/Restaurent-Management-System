@@ -1,0 +1,79 @@
+cont1 {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 40%;
+    text-align: left;
+    font-family:sans-serif;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 0 1px 56px -26px #000;
+  }
+
+
+  .heading{
+      font-style: bold;
+      color:'red'
+  }
+
+
+
+  /* order and item css*/
+
+.shadowBox_order{
+    margin-top: 80px;
+    padding:30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);    
+}
+.shadowBox_item{
+    margin-top: 70px;
+    padding:30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);    
+}
+
+
+.ordersub_btn{
+    background-color: #ff7a33;
+    font-size: large;
+    font-weight: bold;
+}
+.ordersub_btn:hover{
+    background-color:#85c1e9 ;
+    font-size: large;
+    font-weight: bold;
+}
+.itemsub_btn{
+    background-color: #ff7a33;
+    font-size: large;
+    font-weight: bold;
+}
+.itemsub_btn:hover{
+    background-color:#85c1e9 ;
+    font-size: large;
+    font-weight: bold;
+}
+
+.btnUpdate button{
+    width:200px;
+    background-color:#084aad;
+}
+.btnUpdate button:hover{
+    width:200px;
+    background-color: #478fbe;
+}
+.btnUpdate a{
+    width:200px;
+}
+
+.order_img{
+    width: 600px;
+    height: 400px;
+    margin-top: 200px;   
+}
+.item_img{
+    width: 600px;
+    height: 500px;
+    margin-top: 100px;   
+}

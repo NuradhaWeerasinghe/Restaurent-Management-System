@@ -35,29 +35,25 @@ export const SidebarData = [
 },
 {
 	title: "Order Manegment",
-	path: "/order",
+	path: "/order/",
 	icon: <FaIcons.FaBeer />,
 	iconClosed: <RiIcons.RiArrowDownSFill />,
 	iconOpened: <RiIcons.RiArrowUpSFill />,
 
 	subNav: [
 	{
-		title: "Service 1",
-		path: "/services/services1",
+		title: "Order Dashboard",
+		path: "/order/",
 		icon: <IoIcons.IoIosPaper />,
 		cName: "sub-nav",
 	},
 	{
-		title: "Service 2",
-		path: "/services/services2",
+		title: "Items",
+		path: "/item/",
 		icon: <IoIcons.IoIosPaper />,
 		cName: "sub-nav",
 	},
-	{
-		title: "Service 3",
-		path: "/services/services3",
-		icon: <IoIcons.IoIosPaper />,
-	},
+	
 	],
 },
 {
