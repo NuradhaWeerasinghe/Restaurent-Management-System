@@ -18,7 +18,7 @@ app.use(employeeRoutes);
 
 
 const PORT = 8000;// sever port
-const DB_URL = `mongodb+srv://ipl:ipl@db1.hdtak.mongodb.net/Employee?retryWrites=true&w=majority`; 
+const DB_URL = `mongodb+srv://Admin:admin321@project.0tb9c.mongodb.net/highGarden_Db?retryWrites=true&w=majority`; 
 
 //crate options
 mongoose.connect(DB_URL,{
