@@ -62,7 +62,7 @@ export const SidebarData = [
 },
 {
 	title: "Employee Managemet",
-	path: "/",
+	path: "get_Emp",
 	icon: <IconName.AiOutlineUser />,
 },
 {

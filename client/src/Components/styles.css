@@ -1,3 +1,52 @@
 h1{
     font-weight: bold;
 }
+
+.thead-dark{
+    background: black;
+    color: white;
+}
+
+  /* Employee css*/
+
+  .shadowBox{
+    margin-top: 80px;
+    padding:30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);    
+}
+
+
+.sub_btn{
+    background-color: #ff7a33;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 10px;
+}
+.sub_btn:hover{
+    background-color:#85c1e9 ;
+    font-size: large;
+    font-weight: bold;
+}
+.itemsub_btn{
+    background-color: #ff7a33;
+    font-size: large;
+    font-weight: bold;
+}
+.itemsub_btn:hover{
+    background-color:#85c1e9 ;
+    font-size: large;
+    font-weight: bold;
+}
+
+.order_img{
+    width: 600px;
+    height: 450px;
+    margin-top: 200px;   
+    margin-right: 25px;
+}
+.add_img{
+    width: 620px;
+    height: 500px;
+    margin-top: 230px;   
+}

@@ -12,9 +12,9 @@ export default class App extends Component {
       <NavBar/>
       <div className="container">
      
-        <Route path = "/" exact component ={Home}></Route>
-        <Route path = "/add" exact component ={AddEmployee}></Route>
-        <Route path = "/update/:id" exact component ={UpdateEmployee}></Route>
+        <Route path = "/get_Emp" exact component ={Home}></Route>
+        <Route path = "/emp_add" exact component ={AddEmployee}></Route>
+        <Route path = "/emp_update/:id" exact component ={UpdateEmployee}></Route>
         <Route path = "/employee/:id" exact component ={GetSpecific}></Route>
        
        
