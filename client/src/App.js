@@ -6,14 +6,18 @@ import UpdateEmployee from './Components/UpdateEmployee';
 import GetSpecific from './Components/GetSpecific';
 import NavBar from './Components/NavBar/Sidebar';
 
-import AddDriver from './Components/AddDriver';
-import FetchAllDrivers from './Components/FetchAllDrivers';
-import ManageDelivery from './Components/ManageDelivery';
-import AddVehicle from './Components/AddVehicle';
-import FetchAllVehicles from './Components/FetchAllVehicles';
-import EditOrderStatus from './Components/EditOrderStatus';
-import UpdateDriver from './Components/UpdateDriver';
-import UpdateVehicle from './Components/UpdateVehicle';
+
+
+import createOrder from './Components/Orders/createOrder';
+import editOrder from './Components/Orders/editOrder';
+import orderHome from './Components/Orders/orderHome';
+import orderView from './Components/Orders/orderView';
+
+import createItem from './Components/items/createItem';
+import editItem from './Components/items/editItem';
+import itemHome from './Components/items/itemHome';
+import itemView from './Components/items/itemView';
+
 
 
 export default class App extends Component {
@@ -28,14 +32,21 @@ export default class App extends Component {
         <Route path = "/emp_update/:id" exact component ={UpdateEmployee}></Route>
         <Route path = "/employee/:id" exact component ={GetSpecific}></Route>
        
-        <Route path="/ManageDelivery" component={ManageDelivery}></Route>
-        <Route path='/add_driver' component={AddDriver}></Route>
-        <Route path='/display_driver' component={FetchAllDrivers}></Route>
-        <Route path='/add_vehicle' component={AddVehicle}></Route>
-        <Route path='/display_vehicle' component={FetchAllVehicles}></Route>
-        <Route path='/EditOrderStatus' component={EditOrderStatus}></Route>
-        <Route path='/update_driver/:id' component={UpdateDriver}></Route>
-        <Route path='/update_vehicle/:id' component={UpdateVehicle}></Route>        
+
+
+        {/* Order Routes*/}
+        <Route path ="/order/" exact component = {orderHome}></Route>
+          <Route path = "/order/add" component = {createOrder}></Route>
+          <Route path ="/order/edit/:id" component={editOrder}></Route>
+          <Route path ="/order/orders/:id" component={orderView}></Route>
+
+          {/* Item Routes*/}
+          <Route path ="/item/" exact component = {itemHome}></Route>
+          <Route path = "/item/add" component = {createItem}></Route>
+          <Route path ="/item/edit/:id" component={editItem}></Route>
+          <Route path ="/item/item/:id" component={itemView}></Route>
+
+
        
       </div>
       </BrowserRouter>

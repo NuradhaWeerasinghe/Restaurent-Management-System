@@ -7,16 +7,25 @@ const app = express();
 
 //import routes
 const employeeRoutes = require('./routes/employees');
-const driverRouter = require("./routes/drivers.js");
-const vehicleRouter = require("./routes/vehicles");
+
+
+
+const orderRoutes = require('./routes/orders');
+const itemRoutes = require('./routes/items');
+
+
 //app middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 //roote middleware
 app.use(employeeRoutes);
-app.use(driverRouter);
-app.use(vehicleRouter);
+
+
+app.use(orderRoutes);
+app.use(itemRoutes);
+
+
 
 const PORT = 8000;// sever port
 const DB_URL = `mongodb+srv://Admin:admin321@project.0tb9c.mongodb.net/highGarden_Db?retryWrites=true&w=majority`; 
