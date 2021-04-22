@@ -14,12 +14,14 @@ const orderRoutes = require('./routes/orders');
 const itemRoutes = require('./routes/items');
 
 
+
 //app middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 //roote middleware
 app.use(employeeRoutes);
+app.use(billRoutes);
 
 
 app.use(orderRoutes);
