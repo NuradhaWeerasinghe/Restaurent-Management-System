@@ -7,18 +7,21 @@ const app = express();
 
 //import routes
 const employeeRoutes = require('./routes/employees');
-//Supplier details
-const supplierRoutes = require('./routes/Supplier-routes');
-//supplier orders route
-const SupplierOrderRoutes = require('./routes/Supplier-order-routes');
-
+=
+const recordRoutes = require('./routes/records');
 
 
 
 const orderRoutes = require('./routes/orders');
 const itemRoutes = require('./routes/items');
 
+const driverRouter = require("./routes/drivers.js");
+const vehicleRouter = require("./routes/vehicles");
 
+const billRoutes = require('./routes/bills');
+
+const postRoutes = require('./routes/posts');
+const { Router } = require('express');
 
 //app middleware
 app.use(bodyParser.json());
@@ -26,6 +29,7 @@ app.use(cors());
 
 //roote middleware
 app.use(employeeRoutes);
+app.use(recordRoutes);
 
 
 app.use(billRoutes);
@@ -34,8 +38,13 @@ app.use(billRoutes);
 app.use(orderRoutes);
 app.use(itemRoutes);
 
+app.use(driverRouter);
+app.use(vehicleRouter);
 
+app.use(postRoutes);
 
+app.use('/api/supplier', supplierRoutes);
+app.use('/api/supplierorder', SupplierOrderRoutes);
 
 
 const PORT = 8000;// sever port
