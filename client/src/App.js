@@ -7,6 +7,7 @@ import GetSpecific from './Components/GetSpecific';
 import NavBar from './Components/NavBar/Sidebar';
 
 
+
 import createOrder from './Components/Orders/createOrder';
 import editOrder from './Components/Orders/editOrder';
 import orderHome from './Components/Orders/orderHome';
@@ -16,6 +17,7 @@ import createItem from './Components/items/createItem';
 import editItem from './Components/items/editItem';
 import itemHome from './Components/items/itemHome';
 import itemView from './Components/items/itemView';
+
 
 
 export default class App extends Component {
@@ -31,6 +33,7 @@ export default class App extends Component {
         <Route path = "/employee/:id" exact component ={GetSpecific}></Route>
        
 
+
         {/* Order Routes*/}
         <Route path ="/order/" exact component = {orderHome}></Route>
           <Route path = "/order/add" component = {createOrder}></Route>
@@ -42,6 +45,7 @@ export default class App extends Component {
           <Route path = "/item/add" component = {createItem}></Route>
           <Route path ="/item/edit/:id" component={editItem}></Route>
           <Route path ="/item/item/:id" component={itemView}></Route>
+
 
        
       </div>
