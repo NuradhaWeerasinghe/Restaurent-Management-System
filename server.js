@@ -7,7 +7,9 @@ const app = express();
 
 //import routes
 const employeeRoutes = require('./routes/employees');
+=
 const recordRoutes = require('./routes/records');
+
 
 
 const orderRoutes = require('./routes/orders');
@@ -29,6 +31,7 @@ app.use(cors());
 app.use(employeeRoutes);
 app.use(recordRoutes);
 
+
 app.use(billRoutes);
 
 
@@ -42,6 +45,7 @@ app.use(postRoutes);
 
 app.use('/api/supplier', supplierRoutes);
 app.use('/api/supplierorder', SupplierOrderRoutes);
+
 
 const PORT = 8000;// sever port
 const DB_URL = `mongodb+srv://Admin:admin321@project.0tb9c.mongodb.net/highGarden_Db?retryWrites=true&w=majority`; 

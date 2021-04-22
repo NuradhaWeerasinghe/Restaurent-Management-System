@@ -46,6 +46,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 
+
 import createOrder from './Components/Orders/createOrder';
 import editOrder from './Components/Orders/editOrder';
 import orderHome from './Components/Orders/orderHome';
@@ -63,6 +64,7 @@ export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
+
         <NavBar />
         <div className="container">
 
@@ -77,11 +79,13 @@ export default class App extends Component {
 
 
 
+
           {/* Order Routes*/}
           <Route path="/order/" exact component={orderHome}></Route>
           <Route path="/order/add" component={createOrder}></Route>
           <Route path="/order/edit/:id" component={editOrder}></Route>
           <Route path="/order/orders/:id" component={orderView}></Route>
+
 
           {/* Item Routes*/}
           <Route path="/item/" exact component={itemHome}></Route>
@@ -136,6 +140,7 @@ export default class App extends Component {
 
 
         </div>
+
       </BrowserRouter>
     )
   }
