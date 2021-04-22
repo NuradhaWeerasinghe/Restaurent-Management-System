@@ -7,15 +7,28 @@ const app = express();
 
 //import routes
 const employeeRoutes = require('./routes/employees');
-const postRoutes = require('./routes/posts');
-const { Router } = require('express');
+
+
+
+const orderRoutes = require('./routes/orders');
+const itemRoutes = require('./routes/items');
+
+
+
 //app middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 //roote middleware
 app.use(employeeRoutes);
-app.use(postRoutes);
+
+app.use(billRoutes);
+
+
+app.use(orderRoutes);
+app.use(itemRoutes);
+
+
 
 
 const PORT = 8000;// sever port

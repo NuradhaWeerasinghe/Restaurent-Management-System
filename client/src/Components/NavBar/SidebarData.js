@@ -35,39 +35,35 @@ export const SidebarData = [
 },
 {
 	title: "Order Manegment",
-	path: "/order",
+	path: "/order/",
 	icon: <FaIcons.FaBeer />,
 	iconClosed: <RiIcons.RiArrowDownSFill />,
 	iconOpened: <RiIcons.RiArrowUpSFill />,
 
 	subNav: [
 	{
-		title: "Service 1",
-		path: "/services/services1",
+		title: "Order Dashboard",
+		path: "/order/",
 		icon: <IoIcons.IoIosPaper />,
 		cName: "sub-nav",
 	},
 	{
-		title: "Service 2",
-		path: "/services/services2",
+		title: "Items",
+		path: "/item/",
 		icon: <IoIcons.IoIosPaper />,
 		cName: "sub-nav",
 	},
-	{
-		title: "Service 3",
-		path: "/services/services3",
-		icon: <IoIcons.IoIosPaper />,
-	},
+	
 	],
 },
 {
 	title: "Employee Managemet",
-	path: "get_Emp",
+	path: "/get_Emp",
 	icon: <IconName.AiOutlineUser />,
 },
 {
 	title: "Attendance and Leave",
-	path: "/events",
+	path: "/get_R",
 	icon: <GoIcon.GoCalendar />,
 
 
@@ -80,12 +76,12 @@ export const SidebarData = [
 },
 {
 	title: "Finance Managemet",
-	path: "/support",
+	path: "/finan",
 	icon: <IconName.AiOutlineDollar/>,
 },
 {
 	title: "Delivey Managemet",
-	path: "/support",
+	path: "/ManageDelivery",
 	icon: <FaIcons.FaBiking />,
 },
 {
