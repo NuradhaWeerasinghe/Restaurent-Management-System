@@ -67,7 +67,7 @@ export const SidebarData = [
 },
 {
 	title: "Attendance and Leave",
-	path: "/events",
+	path: "/get_R",
 	icon: <GoIcon.GoCalendar />,
 
 
