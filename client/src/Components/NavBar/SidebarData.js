@@ -30,7 +30,7 @@ export const SidebarData = [
 },
 {
 	title: "Inventry Managemet",
-	path: "/contact",
+	path: "/",
 	icon: <IconName.AiOutlineDatabase />,
 },
 {

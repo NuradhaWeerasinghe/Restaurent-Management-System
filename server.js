@@ -7,7 +7,7 @@ const app = express();
 
 //import routes
 const employeeRoutes = require('./routes/employees');
-=
+
 const recordRoutes = require('./routes/records');
 
 
@@ -22,6 +22,11 @@ const billRoutes = require('./routes/bills');
 
 const postRoutes = require('./routes/posts');
 const { Router } = require('express');
+
+//Supplier details
+const supplierRoutes = require('./routes/Supplier-routes');
+//supplier orders route
+const SupplierOrderRoutes = require('./routes/Supplier-order-routes');
 
 //app middleware
 app.use(bodyParser.json());

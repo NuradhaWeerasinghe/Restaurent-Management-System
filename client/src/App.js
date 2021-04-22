@@ -8,7 +8,7 @@ import AddEmployee from './Components/AddEmployee';
 import UpdateEmployee from './Components/UpdateEmployee';
 import GetSpecific from './Components/GetSpecific';
 
-import NavBar from './Components/NavBar/Sidebar';
+
 
 import CreateAttendance from './Components/CreateAttendance';
 import CreateRecord from './Components/CreateRecord';
@@ -32,8 +32,10 @@ import BillHome from './Components/BillHome';
 
 import CreateStock from './Components/CreateStock';
 import EditStock from './Components/EditStock';
-import Home from './Components/Home';
+
 import StockDetails from './Components/StockDetails';
+import HomeC from './Components/HomeC';
+
 
 import ViewSuppliers from './Components/Supplier/ViewSuppliers';
 import AddSupplier from './Components/Supplier/AddSupplier';
@@ -66,6 +68,7 @@ export default class App extends Component {
       <BrowserRouter>
 
         <NavBar />
+        <ToastContainer />
         <div className="container">
 
           {/*Employee*/}
@@ -112,7 +115,7 @@ export default class App extends Component {
           <Route path="/finan/edit/:id" component={EditBill}></Route>
           <Route path="/finan/bill/:id" component={BillDetails}></Route>
 
-          <Route path="/" exact component={Home}></Route>
+          <Route path="/" exact component={HomeC}></Route>
           <Route path="/add" component={CreateStock}></Route>
           <Route path="/edit/:id" component={EditStock}></Route>
           <Route path="/post/:id" component={StockDetails}></Route>
