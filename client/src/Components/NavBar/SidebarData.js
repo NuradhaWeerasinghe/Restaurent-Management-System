@@ -80,7 +80,7 @@ export const SidebarData = [
 },
 {
 	title: "Finance Managemet",
-	path: "/support",
+	path: "/finan",
 	icon: <IconName.AiOutlineDollar/>,
 },
 {

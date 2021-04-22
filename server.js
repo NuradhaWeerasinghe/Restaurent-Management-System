@@ -7,13 +7,14 @@ const app = express();
 
 //import routes
 const employeeRoutes = require('./routes/employees');
-
+const billRoutes = require('./routes/bills');
 //app middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 //roote middleware
 app.use(employeeRoutes);
+app.use(billRoutes);
 
 
 
