@@ -1,19 +1,31 @@
 import React, { Component } from 'react'
 import {BrowserRouter,Route} from "react-router-dom";
+
+import NavBar from './Components/NavBar/Sidebar';
+
 import Home from './Components/Home';
 import AddEmployee from './Components/AddEmployee';
 import UpdateEmployee from './Components/UpdateEmployee';
 import GetSpecific from './Components/GetSpecific';
+
 import NavBar from './Components/NavBar/Sidebar';
-import ViewSuppliers from './Components/Supplier/ViewSuppliers';
-import AddSupplier from './Components/Supplier/AddSupplier';
-import UpdateSupplier from './Components/Supplier/UpdateSupplier';
-import ViewSupplierOrders from './Components/SupplierOrder/ViewSupplierOrders';
-import AddSupplierOrder from './Components/SupplierOrder/AddSupplierOrder';
-import UpdateSupplierOrder from './Components/SupplierOrder/UpdateSupplierOrder';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
+
+
+
+
+
+import createOrder from './Components/Orders/createOrder';
+import editOrder from './Components/Orders/editOrder';
+import orderHome from './Components/Orders/orderHome';
+import orderView from './Components/Orders/orderView';
+
+import createItem from './Components/items/createItem';
+import editItem from './Components/items/editItem';
+import itemHome from './Components/items/itemHome';
+import itemView from './Components/items/itemView';
+
+
+
 
 export default class App extends Component {
   render() {
@@ -23,29 +35,34 @@ export default class App extends Component {
 	  	<ToastContainer />
       <div className="container">
      
-        <Route path = "/" exact component ={Home}></Route>
-        <Route path = "/add" exact component ={AddEmployee}></Route>
-        <Route path = "/update/:id" exact component ={UpdateEmployee}></Route>
+        {/*Employee*/}
+        <Route path = "/get_Emp" exact component ={Home}></Route>
+        <Route path = "/emp_add" exact component ={AddEmployee}></Route>
+        <Route path = "/emp_update/:id" exact component ={UpdateEmployee}></Route>
         <Route path = "/employee/:id" exact component ={GetSpecific}></Route>
-       {/* Supplier routes */}
-					<Route exact path='/supplier'>
-						<ViewSuppliers />
-					</Route>
-					<Route exact path='/add-new-supplier'>
-						<AddSupplier />
-					</Route>
-					<Route exact path='/update-supplier/:id'>
-						<UpdateSupplier />
-					</Route>
-					<Route exact path='/supplier-orders'>
-						<ViewSupplierOrders />
-					</Route>
-					<Route exact path='/new-supplier-order'>
-						<AddSupplierOrder />
-					</Route>
-					<Route exact path='/update-supplier-order/:id'>
-						<UpdateSupplierOrder />
-					</Route>
+
+
+       
+
+
+
+
+        {/* Order Routes*/}
+        <Route path ="/order/" exact component = {orderHome}></Route>
+          <Route path = "/order/add" component = {createOrder}></Route>
+          <Route path ="/order/edit/:id" component={editOrder}></Route>
+          <Route path ="/order/orders/:id" component={orderView}></Route>
+
+          {/* Item Routes*/}
+          <Route path ="/item/" exact component = {itemHome}></Route>
+          <Route path = "/item/add" component = {createItem}></Route>
+          <Route path ="/item/edit/:id" component={editItem}></Route>
+          <Route path ="/item/item/:id" component={itemView}></Route>
+
+
+
+
+
        
       </div>
       </BrowserRouter>

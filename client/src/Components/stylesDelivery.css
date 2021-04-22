@@ -1,60 +1,6 @@
-h1{
-    font-weight: bold;
-}
-
-.thead-dark{
-    background: black;
-    color: white;
-}
-
-  /* Employee css*/
-
-  .shadowBox{
-    margin-top: 80px;
-    padding:30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);    
-}
-
-
-.sub_btn{
-    background-color: #ff7a33;
-    font-size: large;
-    font-weight: bold;
-    border-radius: 10px;
-}
-.sub_btn:hover{
-    background-color:#85c1e9 ;
-    font-size: large;
-    font-weight: bold;
-}
-.itemsub_btn{
-    background-color: #ff7a33;
-    font-size: large;
-    font-weight: bold;
-}
-.itemsub_btn:hover{
-    background-color:#85c1e9 ;
-    font-size: large;
-    font-weight: bold;
-}
-
-.order_img{
-    width: 600px;
-    height: 450px;
-    margin-top: 200px;   
-    margin-right: 25px;
-}
-.add_img{
-    width: 620px;
-    height: 500px;
-    margin-top: 230px;   
-}
-
-/* Bill */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
-.container{
+.containerTop{
     padding-bottom: 50px;
 }
 
@@ -78,6 +24,23 @@ h1,h2,h3{
     margin-bottom: 10px;
 }
 
+.card{
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
+}
+
+.card .button{
+    background-color: #fff;
+    outline: none;   
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    color: #000;
+}
+
+.card .button:hover{
+    background-color: #2e86c1;
+    color: #ffff;
+}
 
 .box{
     margin-top: 10px;
@@ -141,14 +104,18 @@ span{
     margin-bottom: 50px;
 }
 
+.btndriver{
+    margin-top: 20px;
+}
+
+.btndriver button{    
+    width: 300px;
+}
+
+.btndriver a{
+    width: 300px;
+}
+
 .form-group .inputform{
     margin-top: 15px;
-}
-
-.btnbilll button {
-    width: 150px;
-}
-
-.btnbilll a {
-    width: 150px;
 }

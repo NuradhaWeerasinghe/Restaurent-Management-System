@@ -115,7 +115,7 @@ handleSearchArea=(e)=>{
                           <td>{employee.password}</td>
                           <td>
                                
-                            <Link  className="btn btn-outline-primary" to={`/update/${employee._id}`}>
+                            <Link  className="btn btn-outline-primary" to={`/emp_update/${employee._id}`}>
                               <i className="fas fa-edit"></i> &nbsp;Update
                             
                             </Link>
@@ -128,7 +128,7 @@ handleSearchArea=(e)=>{
 
                 </tbody>
                 </table>
-                <Link to="/add" className="btn btn-warning"><i className="fas fa-user-plus"></i>&nbsp;Add Employee</Link>
+                <Link to="emp_add" className="btn btn-warning"><i className="fas fa-user-plus"></i>&nbsp;Add Employee</Link>
                 
                 
  

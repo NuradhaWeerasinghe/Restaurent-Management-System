@@ -13,19 +13,33 @@ const supplierRoutes = require('./routes/Supplier-routes');
 const SupplierOrderRoutes = require('./routes/Supplier-order-routes');
 
 
+
+
+const orderRoutes = require('./routes/orders');
+const itemRoutes = require('./routes/items');
+
+
+
 //app middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 //roote middleware
 app.use(employeeRoutes);
-//supplier routes
-app.use('/api/supplier', supplierRoutes);
-app.use('/api/supplierorder', SupplierOrderRoutes);
+
+
+app.use(billRoutes);
+
+
+app.use(orderRoutes);
+app.use(itemRoutes);
+
+
+
 
 
 const PORT = 8000;// sever port
-const DB_URL = `mongodb+srv://ipl:ipl@db1.hdtak.mongodb.net/Employee?retryWrites=true&w=majority`; 
+const DB_URL = `mongodb+srv://Admin:admin321@project.0tb9c.mongodb.net/highGarden_Db?retryWrites=true&w=majority`; 
 
 //crate options
 mongoose.connect(DB_URL,{
