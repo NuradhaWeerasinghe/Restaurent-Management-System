@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
+  "axios": "^0.21.1",
   "author": "ipl",
   "license": "ISC",
   "dependencies": {
