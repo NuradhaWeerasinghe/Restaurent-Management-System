@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+.containerTop{
+    padding-bottom: 50px;
+}
+
+.heading{
+    margin-top: 100px;
+    margin-bottom: 20px;
+    justify-items: center;
+}
+
+.hr{
+    background-color: #1159df;
+    padding-top: 5px;
+    margin-bottom: 50px;
+}
+
+h1,h2,h3{
+    font-family: 'Open Sans', sans-serif;
+    color: #2e86c1;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.card{
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
+}
+
+.card .button{
+    background-color: #fff;
+    outline: none;   
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    color: #000;
+}
+
+.card .button:hover{
+    background-color: #2e86c1;
+    color: #ffff;
+}
+
+.box{
+    margin-top: 10px;
+    width: 740px;
+    border-radius: 20px;
+}
+
+.box img{
+    border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	height:260px; 
+	width:260px;
+}
+
+.card a{
+    
+    padding-right:20px; 
+    padding-left: 20px; 
+}
+
+span{
+    margin-left: 60px;
+}
+
+.add{
+    margin-top: 10%;
+}
+
+.add a{
+    border-radius: 20px;
+    background-color: #2e86c1;
+    color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.add a:hover{
+    background-color:#fff;
+    color:#000;
+}
+
+.addv a{
+    border-radius: 20px;
+    background-color: #2e86c1;
+    color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.addv a:hover{
+    background-color:#fff;
+    color:#000;
+}
+
+.shadowBox{
+    margin-top: 40px;
+    padding:30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);    
+}
+
+.top{
+    margin-bottom: 50px;
+}
+
+.btndriver{
+    margin-top: 20px;
+}
+
+.btndriver button{    
+    width: 300px;
+}
+
+.btndriver a{
+    width: 300px;
+}
+
+.form-group .inputform{
+    margin-top: 15px;
+}

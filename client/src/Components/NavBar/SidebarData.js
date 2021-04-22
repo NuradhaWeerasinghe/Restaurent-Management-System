@@ -85,7 +85,7 @@ export const SidebarData = [
 },
 {
 	title: "Delivey Managemet",
-	path: "/support",
+	path: "/ManageDelivery",
 	icon: <FaIcons.FaBiking />,
 },
 {
