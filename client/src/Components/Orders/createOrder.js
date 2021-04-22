@@ -21,7 +21,7 @@ export default class createOrder extends Component {
 
             formErrors: {
                 orderId: "",
-                total: Number,
+                total: 0,
             }
         }
     }
@@ -39,7 +39,7 @@ export default class createOrder extends Component {
 
             case "total":
                 formErrors.total =
-                    value.length > 0
+                    value < 0
                         ? "Must be more than 0"
                         : "";
                 break;
@@ -119,7 +119,7 @@ export default class createOrder extends Component {
                                     placeholder="Enter Total"
                                     value={this.state.total}
                                     onChange={this.handleInputChange} required />
-                                {formErrors.total.length > 0 && (
+                                {formErrors.total < 1 ||  (
                                     <span style={{ color: 'red' }} className="errorMessage">{formErrors.total}</span>
                                 )}
                             </div>

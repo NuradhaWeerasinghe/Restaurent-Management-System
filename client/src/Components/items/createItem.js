@@ -23,7 +23,7 @@ export default class createItem extends Component {
 
             formErrors: {
                 itemId: "",
-                price: Number,
+                price: 0,
                 name: "",
                 description: "",
             }
@@ -43,7 +43,7 @@ export default class createItem extends Component {
 
             case "price":
                 formErrors.price =
-                    value.value < 1
+                    value < 0
                         ? "Must be more than 0"
                         : "";
                 break;
@@ -152,7 +152,7 @@ export default class createItem extends Component {
                                     placeholder="Enter the Price"
                                     value={this.state.price}
                                     onChange={this.handleInputChange} required />
-                                {formErrors.price.value < 1 && (
+                                {formErrors.price < 1 || (
                                     <span style={{ color: 'red' }} className="errorMessage">{formErrors.price}</span>
                                 )}
                             </div>

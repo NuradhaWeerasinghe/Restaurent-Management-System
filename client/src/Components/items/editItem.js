@@ -22,7 +22,7 @@ export default class editItem extends Component {
 
             formErrors: {
                 itemId: "",
-                price: Number,
+                price: 0,
                 name: "",
                 description: "",
             }
@@ -42,7 +42,7 @@ export default class editItem extends Component {
 
             case "price":
                 formErrors.price =
-                    value.length < 1
+                    value < 0
                         ? "Must be more than 0"
                         : "";
                 break;
@@ -126,7 +126,7 @@ export default class editItem extends Component {
             <div className="container">
                 <div className="row ">
                     <div className="col-6">
-                        <img className="order_img" alt ="item image" src="../images/item.png" />
+                        <img className="order_img" alt ="item image" src="/images/updateitem.png" />
                     </div>
 
                     <div className="col-6 shadowBox_order" >
@@ -167,7 +167,7 @@ export default class editItem extends Component {
                                     placeholder="Enter the Price"
                                     value={this.state.price}
                                     onChange={this.handleInputChange} />
-                                {formErrors.price.length < 1 && (
+                                {formErrors.price < 1 || (
                                     <span style={{ color: 'red' }} className="errorMessage">{formErrors.price}</span>
                                 )}
                             </div>

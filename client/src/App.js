@@ -6,15 +6,15 @@ import UpdateEmployee from './Components/UpdateEmployee';
 import GetSpecific from './Components/GetSpecific';
 import NavBar from './Components/NavBar/Sidebar';
 
-import createOrder from './components/Orders/createOrder';
-import editOrder from './components/Orders/editOrder';
-import orderHome from './components/Orders/orderHome';
-import orderView from './components/Orders/orderView';
+import createOrder from './Components/Orders/createOrder';
+import editOrder from './Components/Orders/editOrder';
+import orderHome from './Components/Orders/orderHome';
+import orderView from './Components/Orders/orderView';
 
-import createItem from './components/items/createItem';
-import editItem from './components/items/editItem';
-import itemHome from './components/items/itemHome';
-import itemView from './components/items/itemView';
+import createItem from './Components/items/createItem';
+import editItem from './Components/items/editItem';
+import itemHome from './Components/items/itemHome';
+import itemView from './Components/items/itemView';
 
 export default class App extends Component {
   render() {

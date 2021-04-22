@@ -15,7 +15,7 @@ export default class editOrder extends Component {
         super(props);
         this.state = {
             orderId: "",
-            total: Number,
+            total: 0,
             deliveryMethod: "",
             paymentMethod: "",
 
@@ -39,7 +39,7 @@ export default class editOrder extends Component {
 
             case "total":
                 formErrors.total =
-                    value.length > 0
+                    value < 0
                         ? "Must be more than 0"
                         : "";
                 break;
@@ -106,7 +106,7 @@ export default class editOrder extends Component {
             <div className="container">
                 <div className="row ">
                     <div className="col-6">
-                        <img className="order_img" alt ="order image"  src="../images/order.png" />
+                        <img className="order_img" alt ="order image"  src="/images/updateitem.png" />
                     </div>
 
                     <div className="col-6 shadowBox_order" >
@@ -134,7 +134,7 @@ export default class editOrder extends Component {
                                     placeholder="Enter the Total"
                                     value={this.state.total}
                                     onChange={this.handleInputChange} />
-                                {formErrors.total.length > 0 && (
+                                {formErrors.total < 1|| (
                                     <span style={{ color: 'red' }} className="errorMessage">{formErrors.total}</span>
                                 )}
                             </div>
