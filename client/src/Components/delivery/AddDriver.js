@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import { ToastContainer, toast, zoom, Bounce } from "react-toastify";
 import './stylesDelivery.css'
 
 
@@ -44,7 +45,7 @@ export default class CreateBill extends Component{
             case "name":
                 formErrors.name =
                 value.length < 5     || value.length > 30
-                ? "Name must have charchter between 5 and 30"
+                ? "Name must have charchter between 5 to 30"
                 :"";
                 break;
                 case "licenceNo":
@@ -55,8 +56,8 @@ export default class CreateBill extends Component{
                     break;
                     case "nic":
                         formErrors.nic=
-                        value.length < 10 || value.length > 11
-                        ?"NIC must have charactor length 10 or 11"
+                        value.length < 10 || value.length > 12
+                        ?"NIC must have charactor length 10 or 12"
                         :"";
                         break;
                         case "mobile":
@@ -93,7 +94,7 @@ export default class CreateBill extends Component{
         //console.log(data)
         axios.post("http://localhost:8000/driver/add_driver",data).then((res)=>{
             if(res.data.success){
-                alert("New Driver Added")
+                toast.success("New Driver Added");
                 this.setState(
                     {
                         driverNo:"",
@@ -104,7 +105,9 @@ export default class CreateBill extends Component{
                         address:""
                     }
                 )
-            };
+            }else{
+                toast.error("You have an Error in Inserting");
+            }
         });
     };
         
@@ -121,6 +124,7 @@ export default class CreateBill extends Component{
 				    	<div className="col-1"><h3><i class="fas fa-user-plus"></i></h3></div>
                         <div className="col-8 position-relative">
                             <h2>Add New Driver</h2>
+                            <ToastContainer/>
                         </div>
                         <div className="col-3 position-relative"></div>
                         <hr className="hr" style={{height:'2px' , color:'#0a90e8'}}/>                                
