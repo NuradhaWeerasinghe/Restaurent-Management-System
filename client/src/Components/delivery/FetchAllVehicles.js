@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from "axios";
+import { ToastContainer, toast, zoom, Bounce } from "react-toastify";
 import  './stylesDelivery.css';
 
 export default class FetchAllVehicles extends Component{
@@ -29,8 +30,8 @@ export default class FetchAllVehicles extends Component{
       //delte vehicle
       onDelete=(id)=>{
         axios.delete(`http://localhost:8000/vehicle/delete_vehicle/${id}`).then((res)=>{
-          alert("Vehicle Deleted");
-          this.retrieveVehicles();
+        toast.warn("Vehicle Deleted");
+        this.retrieveVehicles();
         })
       }      
 
@@ -72,6 +73,7 @@ export default class FetchAllVehicles extends Component{
                 <div className="row">
                     <div className="col-9 position-relative">
                         <h2>Vehicle Details</h2>
+                        <ToastContainer/>
                     </div>
                     <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
                 </div>                             

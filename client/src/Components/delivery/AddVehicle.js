@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { ToastContainer, toast, zoom, Bounce } from "react-toastify";
 import './stylesDelivery.css'
 
 const formValid = formErrors =>{
@@ -40,8 +41,8 @@ export default class AddVehicle extends Component{
             break;
 			case "modelName":
 				formErrors.modelName=
-				value.length < 6
-				?"Name must have minium 5 character"
+				value.length < 5 || value.length > 20
+				?"Model name must have characters between 5 to 20"
             	:"";
 				break;
 				case "type":
@@ -53,7 +54,7 @@ export default class AddVehicle extends Component{
 					case "owner":
 						formErrors.owner =
 						value.length < 5 || value.length > 30
-						?"Name must have characters between 5 and 30"
+						?"Name must have characters between 5 to 30"
 						:"";
 						break;
 							default:
@@ -83,7 +84,7 @@ export default class AddVehicle extends Component{
     //console.log(data)
     axios.post("http://localhost:8000/vehicle/add_vehicle",data).then((res)=>{
         if(res.data.success){
-            alert("Add new Vehicle")
+            toast.success("New Vehicle Added");
             this.setState(
                 {
                     vehicleNo:"",
@@ -93,7 +94,9 @@ export default class AddVehicle extends Component{
                     registerDate:new Date()
                 }
             )
-        };
+        }else{
+			toast.error("You have an Error in Inserting");
+		}
     });
 };
 
@@ -108,6 +111,7 @@ export default class AddVehicle extends Component{
 					<div className="col-1"><h3><i class="fas fa-motorcycle"></i></h3></div>
                     <div className="col-8 position-relative">
                         <h2>Add New Vehicle</h2>
+						<ToastContainer/>
                     </div>
                     <div className="col-3 position-relative"></div>
                     <hr className="hr" style={{height:'2px' , color:'#0a90e8'}}/>                                

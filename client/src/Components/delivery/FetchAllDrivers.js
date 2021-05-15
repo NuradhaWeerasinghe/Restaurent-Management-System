@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from "axios";
+import { ToastContainer, toast, zoom, Bounce } from "react-toastify";
 import  './stylesDelivery.css';
 
 export default class FetchAllDrivers extends Component{
@@ -27,7 +28,7 @@ export default class FetchAllDrivers extends Component{
       //delete driver function
       onDelete=(id)=>{
         axios.delete(`http://localhost:8000/driver/delete_driver/${id}`).then((res)=>{
-          alert("Driver Deleted");
+          toast.warn("Driver Deleted");
           this.retrieveDrivers();
         })
       }      
@@ -68,6 +69,7 @@ export default class FetchAllDrivers extends Component{
                 <div className="row">
                   <div className="col-9 position-relative">
                     <h2>Drivers Details</h2>
+                    <ToastContainer/>
                   </div>
                   <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
                 </div>                               

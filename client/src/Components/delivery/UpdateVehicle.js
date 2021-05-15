@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { ToastContainer, toast, zoom, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './stylesDelivery.css'
 
 const formValid = formErrors => {
@@ -35,8 +37,8 @@ export default class UpdateVehicle extends Component{
         switch(name){
 			case "modelName":
 				formErrors.modelName=
-				value.length < 6
-				?"Name must have minium 5 character"
+				value.length < 5 || value.length > 20
+				?"Model name must have characters between 5 to 20"
             	:"";
 				break;
 				case "type":
@@ -47,8 +49,8 @@ export default class UpdateVehicle extends Component{
 					break;
 					case "owner":
 						formErrors.owner =
-						value.length < 5 || value.length > 15
-						?"Name must have minium 5 character"
+						value.length < 5 || value.length > 30
+						?"Name must have characters between 5 to 30"
 						:"";
 						break;
 							default:
@@ -79,7 +81,7 @@ export default class UpdateVehicle extends Component{
         //console.log(data)
         axios.put(`http://localhost:8000/vehicle/update_vehicle/${id}`,data).then((res)=>{
             if(res.data.success){
-                alert("Vehicle Update Successfully")
+                toast.info("Vehicle Update Successfully !");
                 this.setState(
                     {
                         vehicleNo:"",
@@ -89,7 +91,9 @@ export default class UpdateVehicle extends Component{
                         registerDate: new Date()
                     }
                 )
-            };
+            }else{
+                toast.error("You have an Error in updating");
+            }
         });
     };
 
@@ -122,6 +126,7 @@ export default class UpdateVehicle extends Component{
 					<div className="col-1"><h3><i class="fas fa-motorcycle"></i></h3></div>
                     <div className="col-8 position-relative">
                         <h2>Update Vehicle</h2>
+						<ToastContainer/>
                     </div>
                     <div className="col-3 position-relative"></div>
                     <hr className="hr" style={{height:'2px' , color:'#0a90e8'}}/>                                
