@@ -15,7 +15,7 @@ const recordRoutes = require('./routes/records');
 const orderRoutes = require('./routes/orders');
 const itemRoutes = require('./routes/items');
 
-const driverRouter = require("./routes/drivers.js");
+const driverRouter = require("./routes/drivers");
 const vehicleRouter = require("./routes/vehicles");
 
 const billRoutes = require('./routes/bills');
@@ -29,8 +29,6 @@ const supplierRoutes = require('./routes/Supplier-routes');
 const SupplierOrderRoutes = require('./routes/Supplier-order-routes');
 
 
-const driverRouter = require("./routes/drivers.js");
-const vehicleRouter = require("./routes/vehicles");
 
 //app middleware
 app.use(bodyParser.json());
