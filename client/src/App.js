@@ -29,6 +29,8 @@ import BillDetails from './Components/BillDetails';
 import CreateBill from './Components/CreateBill';
 import EditBill from './Components/EditBill';
 import BillHome from './Components/BillHome';
+import Calculation from './Components/Calculation';
+
 
 import CreateStock from './Components/CreateStock';
 import EditStock from './Components/EditStock';
@@ -92,7 +94,7 @@ export default class App extends Component {
           <Route path="/order/add" component={createOrder}></Route>
           <Route path="/order/edit/:id" component={editOrder}></Route>
           <Route path="/order/orders/:id" component={orderView}></Route>
-
+          
 
 
           <Route path="/item/" exact component={itemHome}></Route>
@@ -119,6 +121,7 @@ export default class App extends Component {
           <Route path="/finan/add" component={CreateBill}></Route>
           <Route path="/finan/edit/:id" component={EditBill}></Route>
           <Route path="/finan/bill/:id" component={BillDetails}></Route>
+          <Route path="/finan/cal"  component={Calculation}></Route>
 
           <Route path="/" exact component={HomeC}></Route>
           <Route path="/add" component={CreateStock}></Route>
