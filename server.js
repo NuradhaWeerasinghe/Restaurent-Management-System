@@ -28,6 +28,10 @@ const supplierRoutes = require('./routes/Supplier-routes');
 //supplier orders route
 const SupplierOrderRoutes = require('./routes/Supplier-order-routes');
 
+
+const driverRouter = require("./routes/drivers.js");
+const vehicleRouter = require("./routes/vehicles");
+
 //app middleware
 app.use(bodyParser.json());
 app.use(cors());
@@ -50,6 +54,7 @@ app.use(postRoutes);
 
 app.use('/api/supplier', supplierRoutes);
 app.use('/api/supplierorder', SupplierOrderRoutes);
+
 
 
 const PORT = 8000;// sever port

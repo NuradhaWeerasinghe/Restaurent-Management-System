@@ -43,8 +43,8 @@ export default class CreateBill extends Component{
             break;
             case "name":
                 formErrors.name =
-                value.length < 5     || value.length > 15
-                ? "Name must have charchter between 5 and 15"
+                value.length < 5     || value.length > 30
+                ? "Name must have charchter between 5 and 30"
                 :"";
                 break;
                 case "licenceNo":
@@ -136,7 +136,7 @@ export default class CreateBill extends Component{
                                             <label for="name">Driver No : </label>
                                             <input type="text" className="form-control" id="dNo" name="driverNo" placeholder="Enter driver number" value={this.state.driverNo} onChange={this.handleInputChange} required/>
                                             {formErrors.driverNo.length > 5  &&(
-											    <span style={{color:'red'}} className="errorMessage">{formErrors.driverNo}</span>
+											    <p style={{color:'red'}} className="errorMessage">{formErrors.driverNo}</p>
 										    )}
                                             <p></p>
                                         </div>
@@ -144,28 +144,28 @@ export default class CreateBill extends Component{
                                             <label for="age">Name : </label>
                                             <input type="text" className="form-control" id="dName" name="name" placeholder="Enter name" value={this.state.name} onChange={this.handleInputChange} required/>
                                             {formErrors.name.length > 5  &&(
-											    <span style={{color:'red'}} className="errorMessage">{formErrors.name}</span>
+											    <p style={{color:'red'}} className="errorMessage">{formErrors.name}</p>
 										    )}
                                         </div>
                                         <div className="form-group"  style={{marginTop:'15px'}}>
                                             <label for="age">Licence Number : </label>
                                             <input type="text" className="form-control" id="lNo" name="licenceNo" placeholder="Enter licence number" value={this.state.licenceNo} onChange={this.handleInputChange} required/>
                                             {formErrors.licenceNo.length > 8  &&(
-											    <span style={{color:'red'}} className="errorMessage">{formErrors.licenceNo}</span>
+											    <p style={{color:'red'}} className="errorMessage">{formErrors.licenceNo}</p>
 										    )}
                                         </div>
                                         <div className="form-group"  style={{marginTop:'15px'}}>
                                             <label for="age">N.I.C Number : </label>
                                             <input type="text" className="form-control" id="nic" name="nic" placeholder="Enter NIC number" value={this.state.nic} onChange={this.handleInputChange} required/>
                                             {formErrors.nic.length < 10 || formErrors.nic.length > 10  &&(
-											    <span style={{color:'red'}} className="errorMessage">{formErrors.nic}</span>
+											    <p style={{color:'red'}} className="errorMessage">{formErrors.nic}</p>
 										    )}
                                         </div>
                                         <div className="form-group"  style={{marginTop:'15px'}}>
                                             <label for="age">Mobile Number : </label>
                                             <input type="number" className="form-control" id="mobile" name="mobile" placeholder="Enter mobile number" value={this.state.mobile} onChange={this.handleInputChange} required/>
                                             {formErrors.mobile.length > 10  &&(
-											    <span style={{color:'red'}} className="errorMessage">{formErrors.mobile}</span>
+											    <p style={{color:'red'}} className="errorMessage">{formErrors.mobile}</p>
 										    )}
                                         </div>
                                         <div className="form-group"  style={{marginTop:'15px'}}>

@@ -52,8 +52,8 @@ export default class AddVehicle extends Component{
 					break;
 					case "owner":
 						formErrors.owner =
-						value.length < 5 || value.length > 15
-						?"Name must have minium 5 character"
+						value.length < 5 || value.length > 30
+						?"Name must have characters between 5 and 30"
 						:"";
 						break;
 							default:
@@ -125,7 +125,7 @@ export default class AddVehicle extends Component{
 										<label for="vnumber">Vehicle No : </label>
 										<input type="text" className="form-control" id="vNo" name="vehicleNo" placeholder="Enter vehicle number" value={this.state.vehicleNo} onChange={this.handleInputChange} required/>
 										{formErrors.vehicleNo.length < 5 ||formErrors.vehicleNo.length > 5   &&(
-											<span style={{color:'red'}} className="errorMessage">{formErrors.vehicleNo}</span>
+											<p style={{color:'red'}} className="errorMessage">{formErrors.vehicleNo}</p>
 										)}
 									</div>
 								</div>
@@ -140,14 +140,14 @@ export default class AddVehicle extends Component{
 											<option value="Light Motor Lorry">Light Motor Lorry</option>
 										</select>
 										{formErrors.type.length < 1  &&(
-											<span style={{color:'red'}} className="errorMessage">{formErrors.type}</span>
+											<p style={{color:'red'}} className="errorMessage">{formErrors.type}</p>
 										)}       
 									</div>                
 									<div className="form-group col-8 position-relative"  style={{marginTop:'15px'}}>
 										<label for="model">Model Name : </label>
 										<input type="text" className="form-control" id="mName" name="modelName" placeholder="Enter model name" value={this.state.modelName} onChange={this.handleInputChange} required/>                        						  
 										{formErrors.modelName.length > 6  &&(
-											<span style={{color:'red'}} className="errorMessage">{formErrors.modelName}</span>
+											<p style={{color:'red'}} className="errorMessage">{formErrors.modelName}</p>
 										)}										
 									</div>									
 								</div>
@@ -156,7 +156,7 @@ export default class AddVehicle extends Component{
 										<label for="owner">Owner Name : </label>
 										<input type="text" className="form-control" id="owner" name="owner" placeholder="Enter owner name" value={this.state.owner} onChange={this.handleInputChange} required/>					  
 										{formErrors.owner.length > 5  &&(
-											<span style={{color:'red'}} className="errorMessage">{formErrors.owner}</span>
+											<p style={{color:'red'}} className="errorMessage">{formErrors.owner}</p>
 										)}
 									</div>                        		
 								</div>

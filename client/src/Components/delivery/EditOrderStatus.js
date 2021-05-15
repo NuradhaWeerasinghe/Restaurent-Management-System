@@ -60,15 +60,24 @@ export default class FetchAllDrivers extends Component{
                     <h1 className="top"></h1>
                 </div>
                 <div className="row">
-                        <div className="col-9 position-relative">
-                            <h2>Update Order Status</h2>
-                        </div>
-                        <div className="col-3 position-relative">                                
-                            <input className="form-control search" type="search" placeholder="search" name="searchQuery" onChange={this.handleSearchArea}></input>
-                        </div>
-                        <hr className="hr" style={{height:'2px' , color:'#0a90e8'}}/>                                
-                  </div>                                 
+                  <div className="col position-relative link">
+                    <p><a href="ManageDelivery">Delivery Management</a> {'>'} Order status</p>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-9 position-relative">
+                    <h2>Order Status</h2>
+                  </div>
+                  <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
+                </div>                               
                 <div className="shadowBox">
+                  <div className="row">
+                    <div className="col-4" />
+                    <div className="col-4 search position-relative">
+                      <i className="fa fa-search"></i> <input className="form-control" type="Search" placeholder="Search order no" name="searchQuery" onChange={this.handleSearchArea} />
+                    </div>
+                    <div className="col-4" />
+                  </div>
                     <div className="row">
                         <div className="col-12 ">
                             <table class="table">

@@ -119,3 +119,34 @@ span{
 .form-group .inputform{
     margin-top: 15px;
 }
+
+
+.link a{
+    text-decoration: none;
+    color: rgb(109, 109, 109);
+}
+
+.link p{
+    color: rgb(109, 109, 109);
+}
+
+.search {
+    margin-top: 10px;   
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.search input {
+    height: 45px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-indent: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
+}
+
+.search .fa-search {
+    position: absolute;
+    top: 15px;
+    left: 25px
+}
