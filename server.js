@@ -14,6 +14,10 @@ const orderRoutes = require('./routes/orders');
 const itemRoutes = require('./routes/items');
 
 
+
+const driverRouter = require("./routes/drivers.js");
+const vehicleRouter = require("./routes/vehicles");
+
 //app middleware
 app.use(bodyParser.json());
 app.use(cors());
@@ -25,6 +29,8 @@ app.use(employeeRoutes);
 app.use(orderRoutes);
 app.use(itemRoutes);
 
+app.use(driverRouter);
+app.use(vehicleRouter);
 
 
 const PORT = 8000;// sever port

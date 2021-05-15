@@ -14,7 +14,7 @@ export default class FetchAllVehicles extends Component{
       componentDidMount(){
         this.retrieveVehicles();
       }
-
+      //display all vehicle
       retrieveVehicles(){
         axios.get("http://localhost:8000/display_vehicle").then(res =>{
           if(res.data.success){
@@ -26,7 +26,7 @@ export default class FetchAllVehicles extends Component{
         });
       }    
 
-
+      //delte vehicle
       onDelete=(id)=>{
         axios.delete(`http://localhost:8000/vehicle/delete_vehicle/${id}`).then((res)=>{
           alert("Vehicle Deleted");
@@ -35,7 +35,7 @@ export default class FetchAllVehicles extends Component{
       }      
 
 
-      
+        //search function
       filterData(vehicles,searchKey){
           const result=vehicles.filter((vehicle)=>
           vehicle.vehicleNo.toLowerCase().includes(searchKey)||
@@ -48,8 +48,8 @@ export default class FetchAllVehicles extends Component{
         
         
         handleSearchArea=(e)=>{
-          const searchKey=e.currentTarget.value;
-          axios.get("http://localhost:8000/vehicle").then(res =>{
+          const searchKey=e.currentTarget.value.toLowerCase();
+          axios.get("http://localhost:8000/display_vehicle").then(res =>{
             if(res.data.success){
               this.filterData(res.data.existingVehicles,searchKey)
             }
@@ -64,16 +64,25 @@ export default class FetchAllVehicles extends Component{
                 <div className="row">
                     <h1 className="top"></h1>
                 </div>
-                    <div className="row">
-                        <div className="col-9 position-relative">
-                            <h2>Vehicle Details</h2>
-                        </div>
-                        <div className="col-3 position-relative">                                
-                            <input className="form-control search" type="search" placeholder="search" name="searchQuery" onChange={this.handleSearchArea}></input>
-                        </div>
-                            <hr className="hr" style={{height:'2px' , color:'#0a90e8'}}/>                                
-                    </div>                                
+                <div className="row">
+                    <div className="col position-relative link">
+                        <p><a href="ManageDelivery">Delivery Management</a> {'>'} Vehicle Details</p>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-9 position-relative">
+                        <h2>Vehicle Details</h2>
+                    </div>
+                    <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
+                </div>                             
                 <div className="shadowBox">
+                    <div className="row">
+                        <div className="col-4" />
+                        <div className="col-4 search position-relative">
+                            <i className="fa fa-search"></i> <input className="form-control" type="Search" placeholder="Search a vehicle" name="searchQuery" onChange={this.handleSearchArea} />
+                        </div>
+                        <div className="col-4" />
+                    </div>
                     <div className="row">
                         <div className="col-12 ">
                             <table class="table">

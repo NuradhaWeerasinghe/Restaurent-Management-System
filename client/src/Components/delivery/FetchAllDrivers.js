@@ -13,7 +13,7 @@ export default class FetchAllDrivers extends Component{
       componentDidMount(){
         this.retrieveDrivers();
       }
-
+      //display driver function
       retrieveDrivers(){
         axios.get("http://localhost:8000/display_driver").then(res =>{
           if(res.data.success){
@@ -24,7 +24,7 @@ export default class FetchAllDrivers extends Component{
           }
         });
       }    
-
+      //delete driver function
       onDelete=(id)=>{
         axios.delete(`http://localhost:8000/driver/delete_driver/${id}`).then((res)=>{
           alert("Driver Deleted");
@@ -32,7 +32,7 @@ export default class FetchAllDrivers extends Component{
         })
       }      
 
-
+      //Search a driver function//Search a driver function
       filterData(drivers,searchKey){
         const result=drivers.filter((driver)=>
         driver.driverNo.toLowerCase().includes(searchKey)||
@@ -45,8 +45,8 @@ export default class FetchAllDrivers extends Component{
      
 
       handleSearchArea=(e)=>{
-        const searchKey=e.currentTarget.value;
-        axios.get("http://localhost:8000/driver").then(res =>{
+        const searchKey=e.currentTarget.value.toLowerCase();
+        axios.get("http://localhost:8000/display_driver").then(res =>{
           if(res.data.success){
             this.filterData(res.data.existingDrivers,searchKey)
           }
@@ -61,15 +61,24 @@ export default class FetchAllDrivers extends Component{
                     <h1 className="top"></h1>
                 </div>
                 <div className="row">
-                        <div className="col-9 position-relative">
-                            <h2>Drivers Details</h2>
-                        </div>
-                        <div className="col-3 position-relative">                                
-                            <input className="form-control search" type="search" placeholder="search" name="searchQuery" onChange={this.handleSearchArea}></input>
-                        </div>
-                        <hr className="hr" style={{height:'2px' , color:'#0a90e8'}}/>                                
-                  </div>                                 
+                  <div className="col position-relative link">
+                    <p><a href="ManageDelivery">Delivery Management</a> {'>'} Drivers Details</p>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-9 position-relative">
+                    <h2>Drivers Details</h2>
+                  </div>
+                  <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
+                </div>                               
                 <div className="shadowBox">
+                <div className="row">
+                  <div className="col-4"></div>
+                  <div className="col-4 search position-relative">
+                    <i className="fa fa-search"></i> <input className="form-control" type="Search" placeholder="Search a driver" name="searchQuery" onChange={this.handleSearchArea} />
+                  </div>
+                  <div className="col-4"></div>
+                </div>
                     <div className="row">
                         <div className="col-12 ">
                             <table class="table">
