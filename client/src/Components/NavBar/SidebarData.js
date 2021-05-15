@@ -30,7 +30,7 @@ export const SidebarData = [
 },
 {
 	title: "Inventry Managemet",
-	path: "/contact",
+	path: "/",
 	icon: <IconName.AiOutlineDatabase />,
 },
 {
@@ -70,13 +70,24 @@ export const SidebarData = [
 
 },
 {
-	title: "Supplier Managemet",
-	path: "/support",
-	icon: <MdIcon.MdLocalShipping />,
+		title: 'Supplier Managemet',
+		path: '/supplier',
+		icon: <MdIcon.MdLocalShipping />,
+		iconClosed: <RiIcons.RiArrowDownSFill />,
+		iconOpened: <RiIcons.RiArrowUpSFill />,
+
+		subNav: [
+			{
+				title: 'Supplier Orders',
+				path: '/supplier-orders',
+				icon: <IoIcons.IoIosPaper />,
+				cName: 'sub-nav'
+			}
+		]
 },
 {
 	title: "Finance Managemet",
-	path: "/support",
+	path: "/finan",
 	icon: <IconName.AiOutlineDollar/>,
 },
 {
