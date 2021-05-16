@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import {toast} from 'react-toastify';
 
 
 export default class UpdateEmployee extends Component {
@@ -11,9 +12,7 @@ export default class UpdateEmployee extends Component {
             address: "",
             mobileNo: "",
             designation: "",
-            salary: "",
-            userName: "",
-            password: ""
+            salary: ""
 
         }
     }
@@ -38,14 +37,15 @@ export default class UpdateEmployee extends Component {
             address: address,
             mobileNo: mobileNo,
             designation: designation,
-            salary: salary,
-            userName: userName,
-            password: password
+            salary: salary
         }
         console.log(data)
         axios.put(`http://localhost:8000/employee/update/${id}`, data).then((res) => {
             if (res.data.success) {
-                alert("Updated Employee")
+                toast(`Employee Updated`, {
+                    type: toast.TYPE.SUCCESS,
+                    autoClose: 4000
+                });
                 this.setState(
                     {
                         name: "",
@@ -53,9 +53,7 @@ export default class UpdateEmployee extends Component {
                         address: "",
                         mobileNo: "",
                         designation: "",
-                        salary: "",
-                        userName: "",
-                        password: ""
+                        salary: ""
                     }
                 )
             };
@@ -72,9 +70,7 @@ export default class UpdateEmployee extends Component {
                     mobileNo: res.data.employee.mobileNo,
                     designation: res.data.employee.designation,
                     salary: res.data.employee.salary,
-                    userName: res.data.employee.userName,
-                    password: res.data.employee.password
-
+                   
                 });
                 console.log(this.state.employee);
             }
@@ -159,25 +155,7 @@ export default class UpdateEmployee extends Component {
                                     onChange={this.handleInputChange} />
                             </div>
 
-                            <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>UserName</label>
-                                <input type="text"
-                                    className="form-control"
-                                    name="userName"
-                                    placeholder="Enter UserName"
-                                    value={this.state.userName}
-                                    onChange={this.handleInputChange} />
-                            </div>
-
-                            <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Password</label>
-                                <input type="text"
-                                    className="form-control"
-                                    name="password"
-                                    placeholder="Enter password"
-                                    value={this.state.password}
-                                    onChange={this.handleInputChange} />
-                            </div>
+                            
                             <center>
                                 <div class="d-grid gap-2 col-6 mx-auto">
                                     <button type="submit" className="btn btn-primary sub_btn" onClick={this.onSubmit}>Update</button>

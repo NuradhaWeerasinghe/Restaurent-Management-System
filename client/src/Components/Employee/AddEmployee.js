@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {toast} from 'react-toastify';
 
 const invoiceRegx = RegExp(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/gm);
 const formValid = formErrors =>{
@@ -19,8 +20,6 @@ export default class AddEmployee extends Component {
             mobileNo: Number,
             designation: "",
             salary: Number,
-            userName: "",
-            password: "",
             date: new Date(),
 
             formErrors:{
@@ -73,7 +72,7 @@ export default class AddEmployee extends Component {
             console.error("FORM INVALID-DISPLAY ERROR");
         }
 
-        const { name, email, address, mobileNo, designation, salary, userName, password,date } = this.state;
+        const { name, email, address, mobileNo, designation, salary,date } = this.state;
 
         const data = {
             name: name,
@@ -82,14 +81,15 @@ export default class AddEmployee extends Component {
             mobileNo: mobileNo,
             designation: designation,
             salary: salary,
-            userName: userName,
-            password: password,
             date :date
         }
         console.log(data)
         axios.post("http://localhost:8000/employee/add", data).then((res) => {
             if (res.data.success) {
-                alert("Add New Employee")
+                toast(`New Employee Added `, {
+                    type: toast.TYPE.SUCCESS,
+                    autoClose: 4000
+                });
                 this.setState(
                     {
                         name: "",
@@ -98,8 +98,6 @@ export default class AddEmployee extends Component {
                         mobileNo: Number,
                         designation: "",
                         salary: Number,
-                        userName: "",
-                        password: "",
                         date : new Date()
                     }
                 )
@@ -205,26 +203,7 @@ export default class AddEmployee extends Component {
                                     onChange={this.handleInputChange} />
                             </div>
 
-                            <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>UserName</label>
-                                <input type="text"
-                                    className="form-control"
-                                    name="userName"
-                                    placeholder="Enter UserName"
-                                    value={this.state.userName}
-                                    onChange={this.handleInputChange} />
-                            </div>
-
-                            <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Password</label>
-                                <input type="password"
-                                    className="form-control"
-                                    name="password"
-                                    placeholder="Enter password"
-                                    value={this.state.password}
-                                    onChange={this.handleInputChange} />
-                            </div>
-                          
+                    
                             <center>
                                 <div class="d-grid gap-2 col-6 mx-auto  ">
                                     <button type="submit" className="btn btn-primary sub_btn" onClick={this.onSubmit}><i class="far fa-save"></i>&nbsp;Add</button>
