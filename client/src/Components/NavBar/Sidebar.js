@@ -9,7 +9,7 @@ import { IconContext } from "react-icons/lib";
 
 const Nav = styled.div`
 // margin-top : 0px;
-background: #15171c;
+background: #15171c; //side bar color
 height: 80px;
 display: flex;
 justify-content: flex-start;
@@ -57,7 +57,7 @@ return (
 		</NavIcon>
 		<h1
 			style={{ textAlign: "center",
-					marginLeft: "658px",
+					marginLeft: "659px",
 					color: "white" }}
 		>
 			High Garden

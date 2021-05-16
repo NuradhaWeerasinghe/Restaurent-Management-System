@@ -15,8 +15,9 @@ font-size: 18px;
 
 &:hover {
 	background: #252831;
-	border-left: 4px solid green;
+	border-left: 4px solid #fcc200;
 	cursor: pointer;
+	color: #e4d00a;  // text color
 }
 `;
 
@@ -31,11 +32,13 @@ padding-left: 3rem;
 display: flex;
 align-items: center;
 text-decoration: none;
-color: #f5f5f5;
+color: #fcc200;
 font-size: 18px;
 
 &:hover {
+	
 	background: black;
+	color: #dfff00;  // text color
 	cursor: pointer;
 }
 `;
