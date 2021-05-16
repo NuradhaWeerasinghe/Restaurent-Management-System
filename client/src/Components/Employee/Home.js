@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Link } from "react-router-dom";
-import './styles.css'
+import '../styles.css'
 
 export default class Home extends Component {
 constructor(props){
@@ -43,9 +43,8 @@ filterData(employee,searchKey){
   employee.name.toLowerCase().includes(searchKey)||
   employee.email.toLowerCase().includes(searchKey)||
   employee.address.toLowerCase().includes(searchKey)||
-  employee.designation.toLowerCase().includes(searchKey)||
-  employee.userName.toLowerCase().includes(searchKey)||
-  employee.password.toLowerCase().includes(searchKey)
+  employee.designation.toLowerCase().includes(searchKey)
+
   )
   this.setState({employee:result})
 }
@@ -72,7 +71,7 @@ handleSearchArea=(e)=>{
               <input
               className="form-control"
               type="search"
-              placeholder="Search"
+              placeholder="🔍 Search"
               name="searchQuery"
               onChange={this.handleSearchArea}></input>
 
@@ -81,7 +80,7 @@ handleSearchArea=(e)=>{
         </div> 
             <div className="py-4">
             <h1>Employee Dashbord</h1>
-            <table class=" table table-striped border table border shadow" >
+            <table class=" table shadowBox shadow p-3 mb-5 bg-white rounded" >
                 <thead class="thead-dark">
                     <tr>
                     <th scope="col">#</th>
@@ -90,9 +89,8 @@ handleSearchArea=(e)=>{
                     <th scope="col">Address</th>
                     <th scope="col">MobileNo</th>
                     <th scope="col">Designation</th>
-                    <th scope="col">Salary(RS)</th>
-                    <th scope="col">User Name</th>
-                    <th scope="col">Password</th>
+                    <th scope="col">Salary Date</th>
+                    <th scope="col">Salary(LKR)</th>
                     <th scope="col">Action</th>
                     
                     </tr>
@@ -110,9 +108,9 @@ handleSearchArea=(e)=>{
                           <td>{employee.address}</td>
                           <td>{employee.mobileNo}</td>
                           <td>{employee.designation}</td>
+                          <td>{employee.date}</td>
                           <td>{employee.salary}</td>
-                          <td>{employee.userName}</td>
-                          <td>{employee.password}</td>
+                          
                           <td>
                                
                             <Link  className="btn btn-outline-primary" to={`/emp_update/${employee._id}`}>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+const invoiceRegx = RegExp(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/gm);
 const formValid = formErrors =>{
     let valid = true;
     Object.values(formErrors).forEach(val => {val.length > 0 && (valid = false);
@@ -20,10 +21,12 @@ export default class AddEmployee extends Component {
             salary: Number,
             userName: "",
             password: "",
+            date: new Date(),
 
             formErrors:{
                 mobileNo:Number,
-                name:""
+                name:"",
+                email:""
                 
             } 
 
@@ -41,7 +44,11 @@ export default class AddEmployee extends Component {
             ?"Minimum charchter must be 5"
             :"";
             break;
-
+            case "email":
+            formErrors.email = invoiceRegx.test(value)
+            ? ""
+            : "Didn't match pattern";
+    break;
             case "mobileNo":
             formErrors.mobileNo =
             value.length > 10 || value.length > 10
@@ -66,7 +73,7 @@ export default class AddEmployee extends Component {
             console.error("FORM INVALID-DISPLAY ERROR");
         }
 
-        const { name, email, address, mobileNo, designation, salary, userName, password } = this.state;
+        const { name, email, address, mobileNo, designation, salary, userName, password,date } = this.state;
 
         const data = {
             name: name,
@@ -76,7 +83,8 @@ export default class AddEmployee extends Component {
             designation: designation,
             salary: salary,
             userName: userName,
-            password: password
+            password: password,
+            date :date
         }
         console.log(data)
         axios.post("http://localhost:8000/employee/add", data).then((res) => {
@@ -91,7 +99,8 @@ export default class AddEmployee extends Component {
                         designation: "",
                         salary: Number,
                         userName: "",
-                        password: ""
+                        password: "",
+                        date : new Date()
                     }
                 )
             };
@@ -131,11 +140,14 @@ export default class AddEmployee extends Component {
                             <div className="form-group" style={{ marginBottom: '15px' }}>
                                 <label style={{ marginBottom: '5px' }}>Email</label>
                                 <input type="email"
-                                    className="form-control"
+                                    className={formErrors.email.length > 0 ? "error" : "form-control"}
                                     name="email"
                                     placeholder="Enter email"
                                     value={this.state.email}
                                     onChange={this.handleInputChange} />
+                                     {formErrors.email.length > 0 && (
+                                    <span style={{ color: 'red',fontWeight:'bold' }} className="errorMessage">{formErrors.email}</span>
+                                )}
                             </div>
 
                             <div className="form-group" style={{ marginBottom: '15px' }}>
@@ -174,6 +186,16 @@ export default class AddEmployee extends Component {
                             </div>
 
                             <div className="form-group" style={{ marginBottom: '15px' }}>
+                                <label style={{ marginBottom: '5px' }}>Salary Date</label>
+                                <input type="date"
+                                    className="form-control"
+                                    name="date"
+                                    placeholder="Enter Payment Date"
+                                    value={this.state.date}
+                                    onChange={this.handleInputChange} />
+                            </div>
+
+                            <div className="form-group" style={{ marginBottom: '15px' }}>
                                 <label style={{ marginBottom: '5px' }}>Salary</label>
                                 <input type="number"
                                     className="form-control"
@@ -202,6 +224,7 @@ export default class AddEmployee extends Component {
                                     value={this.state.password}
                                     onChange={this.handleInputChange} />
                             </div>
+                          
                             <center>
                                 <div class="d-grid gap-2 col-6 mx-auto  ">
                                     <button type="submit" className="btn btn-primary sub_btn" onClick={this.onSubmit}><i class="far fa-save"></i>&nbsp;Add</button>

@@ -1,5 +1,8 @@
+import './estyle.css';
 import React, {Component} from 'react';
 import axios from 'axios';
+
+
 export default class GetSpecific extends Component{
     constructor(props){
         super(props);
@@ -21,10 +24,14 @@ export default class GetSpecific extends Component{
     render(){
         const {name,email,address,mobileNo,designation,salary,userName,password}=this.state.employee;
         return(
-            <div style={{marginTop:'20px'}}> 
-            <h4>{name}</h4>
+            <div className="shadowBox">
+            <div className ="tname"> 
+            <h4  style={{textAlign:'center'}}>{name}'s Salary Deatils</h4>
+            </div>
+          
             <hr/>
-            <dl className="row">
+            <dl className="row ">
+                
                 <dt className="col-sm-3">Email</dt>
                 <dd className="col-sm-9">{email}</dd>
 
@@ -40,11 +47,6 @@ export default class GetSpecific extends Component{
                 <dt className="col-sm-3">Salary</dt>
                 <dd className="col-sm-9">{salary}</dd>
 
-                <dt className="col-sm-3">User Name</dt>
-                <dd className="col-sm-9">{userName}</dd>
-
-                <dt className="col-sm-3">Password</dt>
-                <dd className="col-sm-9">{password}</dd>
 
                 
             </dl>

@@ -3,10 +3,10 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import NavBar from './Components/NavBar/Sidebar';
 
-import Home from './Components/Home';
-import AddEmployee from './Components/AddEmployee';
-import UpdateEmployee from './Components/UpdateEmployee';
-import GetSpecific from './Components/GetSpecific';
+import Home from './Components/Employee/Home';
+import AddEmployee from './Components/Employee/AddEmployee';
+import UpdateEmployee from './Components/Employee/UpdateEmployee';
+import GetSpecific from './Components/Employee/GetSpecific';
 
 
 
