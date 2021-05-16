@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import '../styles.css'
+import {jsPDF} from 'jspdf'
+import 'jspdf-autotable'
 
 export default class Home extends Component {
 constructor(props){
@@ -12,6 +14,33 @@ constructor(props){
     };
 }
 
+//export PDF
+
+exportPDF = () => {
+  const unit = "pt";
+  const size = "A3"; // Use A1, A2, A3 or A4
+  const orientation = "portrait"; // portrait or landscape
+
+  const marginLeft = 40;
+  const doc = new jsPDF(orientation, unit, size);
+
+  doc.setFontSize(15);
+
+  const title = "Employee Details";
+  const headers = [['Name','Email','Address', 'MobileNo', 'Designation','date' ,'Salary(LKR)']];
+
+  const data = this.state.employee.map(elt=> [elt.name, elt.email,elt.address,elt.mobileNo,elt.designation,elt.date,elt.salary ]);
+
+  let content = {
+    startY: 50,
+    head: headers,
+    body: data
+  };
+
+  doc.text(title, marginLeft, 40);
+  doc.autoTable(content);
+  doc.save("Employee.pdf")
+}
 
 
 componentDidMount(){
@@ -126,7 +155,8 @@ handleSearchArea=(e)=>{
 
                 </tbody>
                 </table>
-                <Link to="emp_add" className="btn btn-warning"><i className="fas fa-user-plus"></i>&nbsp;Add Employee</Link>
+                <Link to="emp_add" className="btn btn-warning"><i className="fas fa-user-plus"></i>&nbsp;Add Employee</Link>&nbsp;
+                <Link onClick={()=>this.exportPDF()} to="#" className="btn btn-success"><i class="fas fa-download"></i>&nbsp;Download Report</Link>
                 
                 
  
