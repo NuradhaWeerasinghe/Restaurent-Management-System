@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import '../styles.css'
 import {jsPDF} from 'jspdf'
 import 'jspdf-autotable'
+import './estyle.css';
+
 
 export default class Home extends Component {
 constructor(props){

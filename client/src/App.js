@@ -60,7 +60,7 @@ import editItem from './Components/items/editItem';
 import itemHome from './Components/items/itemHome';
 import itemView from './Components/items/itemView';
 
-
+import Footer from './Components/Footer/Footer';
 
 
 
@@ -149,10 +149,12 @@ export default class App extends Component {
 
 
 
-
+       
         </div>
-
+       
+        <Footer/>
       </BrowserRouter>
+      
     )
   }
 }

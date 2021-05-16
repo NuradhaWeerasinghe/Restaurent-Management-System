@@ -6,6 +6,8 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
+import {BiUserCircle} from "react-icons/bi"
+
 
 const Nav = styled.div`
 // margin-top : 0px;
@@ -54,10 +56,11 @@ return (
       
 		<NavIcon to="#">
 			<FaIcons.FaBars onClick={showSidebar} />
+			
 		</NavIcon>
 		<h1
 			style={{ textAlign: "center",
-					marginLeft: "659px",
+					marginLeft: "42%",
 					color: "white" }}
 		>
 			High Garden
