@@ -1,6 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import {jsPDF} from 'jspdf'
+import 'jspdf-autotable'
+import {toast} from 'react-toastify';
 
 
 export default class orderHome extends Component {
@@ -9,6 +12,33 @@ export default class orderHome extends Component {
     this.state = {
       items: []
     };
+  }
+
+// Creating report 
+  exportPDF = () => {
+    const unit = "pt";
+    const size = "A3"; // Use A1, A2, A3 or A4
+    const orientation = "portrait"; // portrait or landscape
+  
+    const marginLeft = 40;
+    const doc = new jsPDF(orientation, unit, size);
+  
+    doc.setFontSize(15);
+  
+    const title = "Items";
+    const headers = [['ItemId','Name','Price(LKR)', 'Description','Category' ]];
+  
+    const data = this.state.items.map(elt=> [elt.itemId, elt.name,elt.price,elt.description,elt.category ]);
+  
+    let content = {
+      startY: 50,
+      head: headers,
+      body: data
+    };
+  
+    doc.text(title, marginLeft, 40);
+    doc.autoTable(content);
+    doc.save("Item List.pdf")
   }
 
   componentDidMount() {
@@ -28,7 +58,10 @@ export default class orderHome extends Component {
 
   onDelete = (id) => {
     axios.delete(`http://localhost:8000/item/delete/${id}`).then((res) => {
-      alert("Item Deleted");
+      toast(`Item Deleted `, {
+        type: toast.TYPE.SUCCESS,
+        autoClose: 4000
+    });
       this.retrieveItems();
     })
   }
@@ -109,6 +142,8 @@ export default class orderHome extends Component {
           </tbody>
         </table>
         <Link to="/item/add" className="btn btn-warning"><i class="fas fa-user-plus"></i>&nbsp;Create New Item</Link>
+        &nbsp;&nbsp;
+         <Link onClick={()=>this.exportPDF()} to="#" className="btn btn-success"><i class="fas fa-download"></i>&nbsp;Download Report</Link>
 
       </div>
     )

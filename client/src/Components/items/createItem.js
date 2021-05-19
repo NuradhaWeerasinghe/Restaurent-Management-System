@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../style.css';
+import {toast} from 'react-toastify';
 
 const formValid = formErrors => {
     let valid = true;
@@ -91,7 +92,10 @@ export default class createItem extends Component {
         //console.log(data)
         axios.post("http://localhost:8000/item/save", data).then((res) => {
             if (res.data.success) {
-                alert("Create New Order")
+                toast(`New Item Created `, {
+                    type: toast.TYPE.SUCCESS,
+                    autoClose: 4000
+                });
                 this.setState(
                     {
                         itemId: "",
@@ -173,7 +177,7 @@ export default class createItem extends Component {
                                 <input type="text"
                                     className="form-control"
                                     name="category"
-                                    placeholder="Enter Payment Method"
+                                    placeholder="Enter Category"
                                     value={this.state.category}
                                     onChange={this.handleInputChange} required />
                             </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {toast} from 'react-toastify';
 
 const formValid = formErrors => {
     let valid = true;
@@ -90,7 +91,10 @@ export default class editItem extends Component {
         //console.log(data)
         axios.put(`http://localhost:8000/item/update/${id}`, data).then((res) => {
             if (res.data.success) {
-                alert("Successfully update Item")
+                toast(`Successfully update Item `, {
+                    type: toast.TYPE.SUCCESS,
+                    autoClose: 4000
+                });
                 this.setState(
                     {
                         itemId: "",
