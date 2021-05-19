@@ -4,12 +4,41 @@ import { toast } from 'react-toastify';
 import SuppliersTable from './SuppliersTable';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 const ViewSuppliers = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [suppliers, setSuppliers] = useState([]);
 	const [baseData, setBaseData] = useState([]);
 	const [deleted, setDeleted] = useState(0);
+	const doc = new jsPDF();
+
+	const downloadReport = () => {
+		doc.text('Suppliers report', 30, 10);
+
+		let array = [];
+		suppliers.map((supplier, index) => {
+			let row = [];
+			row.push(index + 1);
+			row.push(supplier.supplierId);
+			row.push(supplier.supplierName);
+			row.push(supplier.email);
+			row.push(supplier.phoneNumber);
+			row.push(supplier.address);
+			row.push(supplier.supplyItem);
+			array.push(row);
+			return row;
+		});
+
+		doc.autoTable({
+			head: [['#', 'ID', 'Name', 'Email', 'Mobile', 'Address', 'Item']],
+
+			body: array
+		});
+
+		doc.save('suppliers.pdf');
+	};
 
 	useEffect(() => {
 		async function gedData() {
@@ -87,11 +116,24 @@ const ViewSuppliers = () => {
 					/>
 				</div>
 			) : suppliers.length > 0 ? (
+				<>
+
 				<SuppliersTable
 					suppliers={suppliers}
 					setDeleted={setDeleted}
 					deleted={deleted}
 				/>
+
+				<div className='row justify-content-end'>
+						<div className='col-md-2'>
+							<button
+								className='btn btn-primary'
+								onClick={downloadReport}>
+								Download report
+							</button>
+						</div>
+					</div>
+				</>
 			) : (
 				<div className='container text-center py-5'>
 					<h3>No suppliers found</h3>

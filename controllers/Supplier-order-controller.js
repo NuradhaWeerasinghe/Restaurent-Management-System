@@ -90,6 +90,7 @@ const getSupplierOrderById = async (req, res, next) => {
 };
 
 const updateSupplierOrder = async (req, res, next) => {
+
 	const {
 		supplierId,
 		supplierOrderId,
@@ -99,9 +100,7 @@ const updateSupplierOrder = async (req, res, next) => {
 		date
 	} = req.body;
 	try {
-		const supplier = await Supplier.findOne({
-			supplierId: supplierId.toUpperCase()
-		});
+		const supplier = await Supplier.findById(supplierId);
 		if (!supplier) {
 			return res.status(404).json({
 				message: `No supplier found for the id - ${supplierId}, please re-check and try again`
@@ -115,11 +114,12 @@ const updateSupplierOrder = async (req, res, next) => {
 			return res.status(400).json({
 				message: `There is no supplier order in databse with the id ${supplierId}, please check updating supplier order id`
 			});
+		}else{
+			console.log(supplyItem);
 		}
 
 		if (supplierOrder.supplierId != supplierId) {
 			supplierOrder.supplierId = supplier._id;
-			supplierId.supplyItem = supplyItem;
 		}
 		if (supplierOrder.qty != qty) {
 			supplierOrder.qty = qty;
@@ -132,6 +132,7 @@ const updateSupplierOrder = async (req, res, next) => {
 		if (supplierOrder.date != date) {
 			supplierOrder.date = date;
 		}
+		supplierOrder.supplyItem = supplyItem;
 		await supplierOrder.save();
 		return res.status(200).json({
 			message: 'Supplier order updated successfully',
