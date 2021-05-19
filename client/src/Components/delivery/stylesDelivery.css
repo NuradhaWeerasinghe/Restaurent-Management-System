@@ -97,6 +97,8 @@ span{
     margin-top: 40px;
     padding:30px;
     border-radius: 10px;
+    background-color: #fff;
+    opacity: 0.8;    
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);    
 }
 
@@ -123,11 +125,11 @@ span{
 
 .link a{
     text-decoration: none;
-    color: rgb(109, 109, 109);
+    color: rgb(43, 42, 42);
 }
 
 .link p{
-    color: rgb(109, 109, 109);
+    color: rgb(43, 42, 42);
 }
 
 .search {
@@ -149,4 +151,12 @@ span{
     position: absolute;
     top: 15px;
     left: 25px
+}
+
+body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background-image: url('./pattafade.jpg');
+    background-attachment: fixed;
 }
