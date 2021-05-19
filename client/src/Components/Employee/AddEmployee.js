@@ -112,7 +112,7 @@ export default class AddEmployee extends Component {
             <div className="container">
                 <div className="row ">
                     <div className="col-6">
-                        <img className="add_img" src="../images/employee.png" />
+                        <img className="add_img" src="../images/E3.png" />
                     </div>
 
                     <div className="col-6 shadowBox" >

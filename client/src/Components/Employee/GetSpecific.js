@@ -1,6 +1,7 @@
 import './estyle.css';
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 
 export default class GetSpecific extends Component{
@@ -22,11 +23,11 @@ export default class GetSpecific extends Component{
         })
     }
     render(){
-        const {name,email,address,mobileNo,designation,salary,userName,password}=this.state.employee;
+        const {name,email,address,mobileNo,designation,salary}=this.state.employee;
         return(
             <div className="shadowBox">
             <div className ="tname"> 
-            <h4  style={{textAlign:'center'}}>{name}'s Salary Deatils</h4>
+            <h4  style={{textAlign:'center'}}>{name}'s Deatils</h4>
             </div>
           
             <hr/>
@@ -50,6 +51,7 @@ export default class GetSpecific extends Component{
 
                 
             </dl>
+          
             </div>
         )
     }

@@ -111,7 +111,7 @@ handleSearchArea=(e)=>{
         </div> 
             <div className="py-4">
             <h1>Employee Dashbord</h1>
-            <table class=" table shadowBox shadow p-3 mb-5 bg-white rounded" >
+            <table class=" table table-striped borde" >
                 <thead class="thead-dark">
                     <tr>
                     <th scope="col">#</th>

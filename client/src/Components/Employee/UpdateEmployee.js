@@ -87,7 +87,7 @@ export default class UpdateEmployee extends Component {
             <div className="container">
                 <div className="row ">
                     <div className="col-6">
-                        <img className="order_img" src="../images/update.png" />
+                        <img className="order_img" src="../images/eupdate.png" />
                     </div>
                     <div className="col-6 shadowBox" >
                         <center>
@@ -158,7 +158,7 @@ export default class UpdateEmployee extends Component {
                             
                             <center>
                                 <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button type="submit" className="btn btn-primary sub_btn" onClick={this.onSubmit}>Update</button>
+                                    <button type="submit" className="btn btn-primary sub_btn" onClick={this.onSubmit}><i class="far fa-save"></i>&nbsp;Update</button>
                                 </div>
                             </center>
                         </form>

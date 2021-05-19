@@ -68,12 +68,15 @@ import Footer from './Components/Footer/Footer';
 
 
 
+
+
 export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
 
         <NavBar />
+        
         <ToastContainer />
         <div className="container">
 

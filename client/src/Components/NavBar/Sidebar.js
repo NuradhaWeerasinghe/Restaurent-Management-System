@@ -11,8 +11,9 @@ import {BiUserCircle} from "react-icons/bi"
 
 const Nav = styled.div`
 // margin-top : 0px;
-background: #15171c; //side bar color
-height: 80px;
+// background: #15171c; //side bar color
+background: rgb(12, 0, 0);
+height: 90px;
 display: flex;
 justify-content: flex-start;
 align-items: center;
@@ -28,7 +29,7 @@ align-items: center;
 `;
 
 const SidebarNav = styled.nav`
-background: #15171c;
+background: rgb(12, 0, 0);
 width: 275px;
 height: 100vh;
 display: flex;
@@ -60,11 +61,15 @@ return (
 		</NavIcon>
 		<h1
 			style={{ textAlign: "center",
-					marginLeft: "42%",
-					color: "white" }}
+					marginLeft: "32%",
+					color: "white",
+					fontFamily:"Sofia"
+				
+				}}
 		>
-			High Garden
+			High Garden Resturant 🍽️
 		</h1>
+		
 		</Nav>
 		<SidebarNav sidebar={sidebar}>
 		<SidebarWrap>

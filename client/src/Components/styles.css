@@ -50,7 +50,16 @@ h1{
     height: 500px;
     margin-top: 230px;   
 }
-
+.banner_img
+{
+    height: 80px;
+    width: 100%;
+}
+.banner{
+    height: 80px;
+    width: 100%;
+    background : rgb(12, 0, 0);
+}
 /* Bill */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
