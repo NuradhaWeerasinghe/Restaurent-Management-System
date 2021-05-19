@@ -11,7 +11,7 @@ const formValid = formErrors =>{
     return valid;
 };
 
-export default class CreateBill extends Component{
+export default class AddDriver extends Component{
    
     constructor(props){
         super(props);
