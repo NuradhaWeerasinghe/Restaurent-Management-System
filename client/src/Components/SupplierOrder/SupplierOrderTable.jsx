@@ -39,6 +39,7 @@ const SupplierOrderTable = ({ supplierOrders, deleted, setDeleted }) => {
 						<th scope='col'>QTY</th>
 						<th scope='col'>Unit price (LKR)</th>
 						<th scope='col'>Total price (LKR)</th>
+						<th scope='col'>Date</th>
 						<th scope='col'>Manage</th>
 					</tr>
 				</thead>
@@ -54,6 +55,7 @@ const SupplierOrderTable = ({ supplierOrders, deleted, setDeleted }) => {
 								<td>{order.qty}</td>
 								<td>{order.unitPrice}</td>
 								<td>{order.unitPrice * order.qty}</td>
+								<td>{order.date.substring(0,10)}</td>
 								<td>
 									<Link
 										to={`/update-supplier-order/${order.supplierOrderId}`}
