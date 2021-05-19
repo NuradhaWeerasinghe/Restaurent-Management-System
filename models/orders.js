@@ -20,6 +20,10 @@ const orderSchema = new mongoose.Schema({//Create schema for creating an order
         type : String,
         required : true //Backend validtion 
     }, 
+    email: {
+        type : String,
+        required : true //Backend validtion 
+    }, 
 
     address: {
         type : String,
@@ -39,5 +43,17 @@ const orderSchema = new mongoose.Schema({//Create schema for creating an order
         type : String,
         required : true //Backend validtion 
     }, 
-});
+    cartItems: [
+        {
+          _id: String,
+          title: String,
+          price: Number,
+          count: Number,
+        },
+      ],
+},
+{
+    timestamps: true,
+  }
+);
 module.exports = mongoose.model('Orders',orderSchema);
