@@ -144,7 +144,7 @@ export default class editOrder extends Component {
 
                     <div className="col-6 shadowBox_order" >
                         <center>
-                            <h1 className="h3 mb-3 font-weight-normal">Update Order</h1>
+                            <h1 className="h3 mb-3 font-weight-normal">Update Order Details</h1>
                         </center>
                         <form onSubmit={this.onSubmit}>
                             <div className="form-group" style={{ marginBottom: '15px' }}>
@@ -152,6 +152,7 @@ export default class editOrder extends Component {
                                 <input type="text"
                                     className="form-control"
                                     name="orderId"
+                                    disabled
                                     placeholder="Enter Order Id"
                                     value={this.state.orderId}
                                     onChange={this.handleInputChange} />
@@ -164,6 +165,7 @@ export default class editOrder extends Component {
                                 <input type="text"
                                     className="form-control"
                                     name="name"
+                                    disabled
                                     placeholder="Enter name"
                                     value={this.state.name}
                                     onChange={this.handleInputChange} required />
@@ -173,6 +175,7 @@ export default class editOrder extends Component {
                                 <input type="number"
                                     className="form-control"
                                     name="phone"
+                                    disabled
                                     placeholder="Enter Phone number"
                                     value={this.state.phone}
                                     onChange={this.handleInputChange} required />
@@ -185,6 +188,7 @@ export default class editOrder extends Component {
                                 <input type="number"
                                     className="form-control"
                                     name="total"
+                                    disabled
                                     placeholder="Enter the Total"
                                     value={this.state.total}
                                     onChange={this.handleInputChange} />
@@ -197,6 +201,7 @@ export default class editOrder extends Component {
                                 <input type="text"
                                     className="form-control"
                                     name="address"
+                                    disabled
                                     placeholder="Enter address"
                                     value={this.state.address}
                                     onChange={this.handleInputChange} required />
@@ -206,6 +211,7 @@ export default class editOrder extends Component {
                                 <input type="text"
                                     className="form-control"
                                     name="deliveryMethod"
+                                    disabled
                                     placeholder="Enter Delivery Method"
                                     value={this.state.deliveryMethod}
                                     onChange={this.handleInputChange} />
@@ -216,6 +222,7 @@ export default class editOrder extends Component {
                                     className="form-control"
                                     name="paymentMethod"
                                     placeholder="Enter Amount"
+                                    disabled
                                     value={this.state.paymentMethod}
                                     onChange={this.handleInputChange} />
                             </div>
@@ -225,6 +232,7 @@ export default class editOrder extends Component {
                                     className="form-control"
                                     name="status"
                                     placeholder="Enter Amount"
+                                    
                                     value={this.state.status}
                                     onChange={this.handleInputChange} >
                                         <option selected></option>
