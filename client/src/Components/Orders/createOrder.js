@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../style.css';
+import {toast} from 'react-toastify';
 
 const formValid = formErrors => {
     let valid = true;
@@ -15,13 +16,18 @@ export default class createOrder extends Component {
         this.state = {
             orderId: "",
             total: Number,
+            phone: Number,
+            name: "",
+            address: "",
+            status:"",
             deliveryMethod: "",
             paymentMethod: "",
 
 
             formErrors: {
                 orderId: "",
-                total: 0,
+                total: "",
+                phone: "",
             }
         }
     }
@@ -34,6 +40,18 @@ export default class createOrder extends Component {
                 formErrors.orderId =
                     value.length < 3
                         ? "Minimum charactors must be  more than 3"
+                        : "";
+                break;
+            case "name":
+                    formErrors.name =
+                        value.length < 3
+                            ? "Minimum charactors must be  more than 3"
+                            : "";
+                    break;
+            case "phone":
+                formErrors.phone =
+                    value.length != 10
+                        ? "Enter a valid phone number"
                         : "";
                 break;
 
@@ -62,23 +80,35 @@ export default class createOrder extends Component {
             console.error("FORM INVALID-DISPLAY ERROR");
         }
 
-        const { orderId, total, deliveryMethod, paymentMethod } = this.state;
+        const { orderId, total,phone, name, address, deliveryMethod, paymentMethod,status } = this.state;
         const data = {
             orderId: orderId,
             total: total,
+            phone:phone,
+            name:name,
+            address:address,
             deliveryMethod: deliveryMethod,
             paymentMethod: paymentMethod,
+            status:status,
         }
         //console.log(data)
         axios.post("http://localhost:8000/order/save", data).then((res) => {
             if (res.data.success) {
-                alert("Create New Order")
+                toast(`New Order Created `, {
+                    type: toast.TYPE.SUCCESS,
+                    autoClose: 4000
+                });
+               
                 this.setState(
                     {
                         orderId: "",
                         total: Number,
+                        phone: Number,
+                        name: "",
+                        address: "",
                         deliveryMethod: "",
                         paymentMethod: "",
+                        status:"Pending",
                     }
                 )
             };
@@ -112,6 +142,27 @@ export default class createOrder extends Component {
                                 )}
                             </div>
                             <div className="form-group" style={{ marginBottom: '15px' }}>
+                                <label style={{ marginBottom: '5px' }}>Name</label>
+                                <input type="text"
+                                    className="form-control"
+                                    name="name"
+                                    placeholder="Enter name"
+                                    value={this.state.name}
+                                    onChange={this.handleInputChange} required />
+                            </div>
+                            <div className="form-group" style={{ marginBottom: '15px' }}>
+                                <label style={{ marginBottom: '5px' }}>Phone </label>
+                                <input type="number"
+                                    className="form-control"
+                                    name="phone"
+                                    placeholder="Enter Phone number"
+                                    value={this.state.phone}
+                                    onChange={this.handleInputChange} required />
+                                {formErrors.phone.length != 10 && (
+                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.phone}</span>
+                                )}
+                            </div>
+                            <div className="form-group" style={{ marginBottom: '15px' }}>
                                 <label style={{ marginBottom: '5px' }}>Total (LKR.)</label>
                                 <input type="number"
                                     className="form-control"
@@ -123,6 +174,16 @@ export default class createOrder extends Component {
                                     <span style={{ color: 'red' }} className="errorMessage">{formErrors.total}</span>
                                 )}
                             </div>
+                            <div className="form-group" style={{ marginBottom: '15px' }}>
+                                <label style={{ marginBottom: '5px' }}>Address</label>
+                                <input type="text"
+                                    className="form-control"
+                                    name="address"
+                                    placeholder="Enter address"
+                                    value={this.state.address}
+                                    onChange={this.handleInputChange} required />
+                            </div>
+                           
                             <div className="form-group" style={{ marginBottom: '15px' }}>
                                 <label style={{ marginBottom: '5px' }}>Delivery Method</label>
                                 <input type="text"

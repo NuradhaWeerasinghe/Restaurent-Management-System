@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {toast} from 'react-toastify';
 
 const formValid = formErrors => {
     let valid = true;
@@ -15,13 +16,18 @@ export default class editOrder extends Component {
         super(props);
         this.state = {
             orderId: "",
-            total: 0,
+            total: Number,
+            phone: Number,
+            name: "",
+            address: "",
             deliveryMethod: "",
             paymentMethod: "",
+            status:"",
 
             formErrors: {
                 orderId: "",
                 total: Number,
+                phone: Number,
             }
         }
     }
@@ -34,6 +40,18 @@ export default class editOrder extends Component {
                 formErrors.orderId =
                     value.length < 3
                         ? "Minimum charactors must be  more than 3"
+                        : "";
+                break;
+            case "name":
+                formErrors.name =
+                    value.length < 3
+                        ? "Minimum charactors must be  more than 3"
+                        : "";
+                break;
+            case "phone":
+                formErrors.phone =
+                    value.length != 10
+                        ? "Enter a valid phone number"
                         : "";
                 break;
 
@@ -62,23 +80,34 @@ export default class editOrder extends Component {
         }
 
         const id = this.props.match.params.id;
-        const { orderId, total, deliveryMethod, paymentMethod } = this.state;
+        const { orderId, total,phone, name, address, deliveryMethod, paymentMethod,status } = this.state;
         const data = {
             orderId: orderId,
             total: total,
+            phone:phone,
+            name:name,
+            address:address,
             deliveryMethod: deliveryMethod,
             paymentMethod: paymentMethod,
+            status:status,
         }
         //console.log(data)
         axios.put(`http://localhost:8000/order/update/${id}`, data).then((res) => {
             if (res.data.success) {
-                alert("Successfully update Order")
+                toast(`Successfully update Order `, {
+                    type: toast.TYPE.SUCCESS,
+                    autoClose: 4000
+                });
                 this.setState(
                     {
                         orderId: "",
                         total: Number,
+                        phone: Number,
+                        name: "",
+                        address: "",
                         deliveryMethod: "",
                         paymentMethod: "",
+                        status:"",
                     }
                 )
             };
@@ -92,8 +121,12 @@ export default class editOrder extends Component {
                 this.setState({
                     orderId: res.data.order.orderId,
                     total: res.data.order.total,
+                    phone: res.data.order.phone,
                     deliveryMethod: res.data.order.deliveryMethod,
                     paymentMethod: res.data.order.paymentMethod,
+                    address: res.data.order.address,
+                    name: res.data.order.name,
+                    status:res.data.order.status,
 
                 });
                 console.log(this.state.order);
@@ -127,6 +160,27 @@ export default class editOrder extends Component {
                                 )}
                             </div>
                             <div className="form-group" style={{ marginBottom: '15px' }}>
+                                <label style={{ marginBottom: '5px' }}>Name</label>
+                                <input type="text"
+                                    className="form-control"
+                                    name="name"
+                                    placeholder="Enter name"
+                                    value={this.state.name}
+                                    onChange={this.handleInputChange} required />
+                            </div>
+                            <div className="form-group" style={{ marginBottom: '15px' }}>
+                                <label style={{ marginBottom: '5px' }}>Phone </label>
+                                <input type="number"
+                                    className="form-control"
+                                    name="phone"
+                                    placeholder="Enter Phone number"
+                                    value={this.state.phone}
+                                    onChange={this.handleInputChange} required />
+                                {formErrors.phone.length != 10 && (
+                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.phone}</span>
+                                )}
+                            </div>
+                            <div className="form-group" style={{ marginBottom: '15px' }}>
                                 <label style={{ marginBottom: '5px' }}>Total</label>
                                 <input type="number"
                                     className="form-control"
@@ -137,6 +191,15 @@ export default class editOrder extends Component {
                                 {formErrors.total < 1|| (
                                     <span style={{ color: 'red' }} className="errorMessage">{formErrors.total}</span>
                                 )}
+                            </div>
+                            <div className="form-group" style={{ marginBottom: '15px' }}>
+                                <label style={{ marginBottom: '5px' }}>Address</label>
+                                <input type="text"
+                                    className="form-control"
+                                    name="address"
+                                    placeholder="Enter address"
+                                    value={this.state.address}
+                                    onChange={this.handleInputChange} required />
                             </div>
                             <div className="form-group" style={{ marginBottom: '15px' }}>
                                 <label style={{ marginBottom: '5px' }}>Delivery Method</label>
@@ -155,6 +218,21 @@ export default class editOrder extends Component {
                                     placeholder="Enter Amount"
                                     value={this.state.paymentMethod}
                                     onChange={this.handleInputChange} />
+                            </div>
+                            <div className="form-group" style={{ marginBottom: '15px' }}>
+                                <label style={{ marginBottom: '5px' }}>Status</label>
+                                <select type="text"
+                                    className="form-control"
+                                    name="status"
+                                    placeholder="Enter Amount"
+                                    value={this.state.status}
+                                    onChange={this.handleInputChange} >
+                                        <option selected></option>
+                                        <option values="Pending">Pending</option>
+                                        <option values="Accepted">Accepted</option>
+                                        <option values="Completed">Completed</option>
+                                        <option values="Cancelled">Cancelled</option>
+                                        </select>
                             </div>
 
                             <div class="form-group btnupdate col-12">

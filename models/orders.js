@@ -11,6 +11,21 @@ const orderSchema = new mongoose.Schema({//Create schema for creating an order
         required : true //Backend validtion 
     },
 
+    phone:{
+        type :Number,
+        required : true //Backend validtion 
+    },
+
+    name: {
+        type : String,
+        required : true //Backend validtion 
+    }, 
+
+    address: {
+        type : String,
+        required : true //Backend validtion 
+    }, 
+
     deliveryMethod: {
         type : String,
         required : true //Backend validtion 
@@ -20,5 +35,9 @@ const orderSchema = new mongoose.Schema({//Create schema for creating an order
         type : String,
         required : true //Backend validtion 
     },  
+    status: {
+        type : String,
+        required : true //Backend validtion 
+    }, 
 });
 module.exports = mongoose.model('Orders',orderSchema);
