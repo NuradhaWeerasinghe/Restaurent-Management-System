@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import {toast} from 'react-toastify';
 
 
+//OrderHome class
 export default class orderHome extends Component {
   constructor(props) {
     super(props);
@@ -26,9 +27,10 @@ export default class orderHome extends Component {
     doc.setFontSize(15);
   
     const title = "Orders";
-    const headers = [['Order Id','Name', 'Phone','Total','address','deliveryMethod','paymentMethod','Status' ]];
+    const headers = [['Order Id','Name', 'Phone','Total','address','deliveryMethod','paymentMethod','Status','Order Items' ]];
   
-    const data = this.state.orders.map(elt=> [elt.orderId, elt.name,elt.phone,elt.total,elt.address,elt.deliveryMethod,elt.paymentMethod,elt.status ]);
+    const data = this.state.orders.map(elt=> [elt._id, elt.name,elt.phone,elt.total,elt.address,elt.deliveryMethod,elt.paymentMethod,elt.status,
+      elt.cartItems.map((x) => [(x.count +" "+"x"+" "+ x.title+" , ")])]);
   
     let content = {
       startY: 50,
@@ -67,19 +69,17 @@ export default class orderHome extends Component {
     })
   }
 
+  // filter methods
   filterData(orders, searchKey) {
     const result = orders.filter((order) =>
 
       order.deliveryMethod.toLowerCase().includes(searchKey) ||
-      order.deliveryMethod.toUpperCase().includes(searchKey) ||
       order.name.toLowerCase().includes(searchKey) ||
-      order.name.toUpperCase().includes(searchKey) ||
       order.address.toLowerCase().includes(searchKey) ||
-      order.address.toUpperCase().includes(searchKey) ||
-      order.paymentMethod.toLowerCase().includes(searchKey) ||
-      order.paymentMethod.toUpperCase().includes(searchKey) ||
-      order.orderId.toLowerCase().includes(searchKey) ||
-      order.orderId.toUpperCase().includes(searchKey)
+      order.status.toLowerCase().includes(searchKey) ||
+      order.paymentMethod.toLowerCase().includes(searchKey) 
+      //
+     
 
     )
     this.setState({ orders: result })
@@ -124,32 +124,32 @@ export default class orderHome extends Component {
 
         </div>
 
-        <table className="table border shadow  table table-striped border ">
+        <table className="table border shadow  table table-striped border " style={{width:'114  %',marginLeft:'-80px'}}>
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Order ID</th>
+              <th scope="col">Date</th>
               <th scope="col">Name</th>
-              <th scope="col">Phone</th>
               <th scope="col">Total (LKR.)</th>
-              <th scope="col">Address</th>
               <th scope="col">Delivery Method</th>
               <th scope="col">Payment Method</th>
               <th scope="col">Status</th>
+              <th scope="col">Order Items</th>
             </tr>
           </thead>
           <tbody>
             {this.state.orders.map((orders, index) => (
               <tr key={index}>
                 <th scope="row">{index + 1}</th>
-                <td><a href={`/order/orders/${orders._id}`} style={{ textDecoration: 'none' }}>{orders.orderId}</a></td>
+                <td>{orders._id}</td>
+                <td>{orders.createdAt}</td>
                 <td>{orders.name}</td>
-                <td>{orders.phone}</td>
                 <td>{orders.total}</td>
-                <td>{orders.address}</td>
                 <td>{orders.deliveryMethod}</td>
                 <td>{orders.paymentMethod}</td>
                 <td>{orders.status}</td>
+                <td>{orders.cartItems.map((x) => (x.count +" "+"x"+" "+ x.title+" , "))}</td>
                 <td><Link className="btn btn-outline-primary" to={`/order/edit/${orders._id}`}>
                   <i className="fas fa-edit"></i>&nbsp;Edit
           </Link>
