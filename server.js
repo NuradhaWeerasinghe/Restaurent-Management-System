@@ -28,7 +28,7 @@ const supplierRoutes = require('./routes/Supplier-routes');
 //supplier orders route
 const SupplierOrderRoutes = require('./routes/Supplier-order-routes');
 
-
+const attendRoutes = require('./routes/attends');
 
 //app middleware
 app.use(bodyParser.json());
@@ -53,7 +53,7 @@ app.use(postRoutes);
 app.use('/api/supplier', supplierRoutes);
 app.use('/api/supplierorder', SupplierOrderRoutes);
 
-
+app.use(attendRoutes);
 
 const PORT = 8000;// sever port
 const DB_URL = `mongodb+srv://Admin:admin321@project.0tb9c.mongodb.net/highGarden_Db?retryWrites=true&w=majority`; 

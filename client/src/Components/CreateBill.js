@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './styles.css'
 
-const invoiceRegx = RegExp(/^[I]*$/);
-const formValid = formErrors => {
+
+const invoiceRegx = RegExp(/^[I]+[N]+\d{3}$/gm);
+const formValid = ({formErrors, ...rest}) => {
     let valid = true;
     Object.values(formErrors).forEach(val => {
         val.length > 0 && (valid = false);
+    });
+    Object.values(rest).forEach(val =>{
+        val === null && (valid = false);
     });
     return valid;
 };
@@ -18,7 +22,7 @@ export default class CreateBill extends Component {
             invoiceID: null,
             amount: Number,
             accNo: Number,
-            pDate: new Date(),
+            pDate:  Date,
             formErrors: {
                 name: "",
                 invoiceID: "",
@@ -34,21 +38,20 @@ export default class CreateBill extends Component {
         switch (name) {
             case "name":
                 formErrors.name =
-                    value.length < 5
+                    value.trim().length < 5
                         ? "Minimum charachter must be 5"
                         : "";
                 break;
             case "accNo":
                 formErrors.accNo =
-                    value.length < 8 || value.length > 8
-                        ? "Must be 8 digits"
+                    value.length < 10 || value.length > 12
+                        ? "Must be between 10 and 12 digits"
                         : "";
                 break;
             case "invoiceID":
-                formErrors.invoiceID =
-                    value.length < 5 || value.length > 5
-                        ? "Didn't match pattern"
-                        : "";
+                formErrors.invoiceID = invoiceRegx.test(value)
+                        ? ""
+                        : "Didn't match pattern";
                 break;
                 case "amount":
                 formErrors.amount =
@@ -68,10 +71,9 @@ export default class CreateBill extends Component {
 
 
     onSubmit = (e) => {
+
         e.preventDefault();
-        if (!formValid(this.state.formErrors)) {
-            console.error("FORM INVALID-DISPLAY ERROR");
-        }
+        if (formValid(this.state)) {
         const { name, invoiceID, accNo, amount, pDate } = this.state;
         const data = {
             name: name,
@@ -90,11 +92,14 @@ export default class CreateBill extends Component {
                         invoiceID: "",
                         accNo: Number,
                         amount: Number,
-                        pDate: new Date()
+                        pDate:  Date
                     }
                 )
             };
         });
+    }
+    else
+    alert("PLEASE ENTER DETAILS CORRECTLY!");
     };
 
     render() {
@@ -119,55 +124,58 @@ export default class CreateBill extends Component {
                     <div className="col-7">
                         <form onSubmit={this.onSubmit} className="shadowBox" >
                             <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Bill Name</label>
+                                <label style={{ marginBottom: '5px', fontWeight:'bold' }}>Bill Name</label>
+                                
                                 <input type="text"
-                                    className="form-control"
+                                    className={formErrors.name.trim().length > 5 ? "error" : "form-control"}
                                     name="name"
                                     placeholder="Enter Bill Name"
                                     value={this.state.name}
-                                    onChange={this.handleInputChange} required />
-                                {formErrors.name.length > 5 && (
-                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.name}</span>
+                                    onChange={this.handleInputChange} />
+                                {formErrors.name.trim().length > 5 && (
+                                    <span style={{ color: 'red' ,fontWeight:'bold'}} className="errorMessage">{formErrors.name}</span>
                                 )}
                             </div>
                             <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Invoice ID</label>
+                                <label style={{ marginBottom: '5px',fontWeight:'bold' }}>Invoice ID</label>
                                 <input type="text"
-                                    className="form-control"
+                                    className={formErrors.invoiceID.length > 0 ? "error" : "form-control"}
                                     name="invoiceID"
-                                    placeholder="Enter Invoice ID"
+                                    placeholder="Enter Invoice ID                   Example:IN000"
                                     value={this.state.invoiceID}
-                                    onChange={this.handleInputChange} required />
-                                {formErrors.invoiceID.length > 5 && (
-                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.invoiceID}</span>
+                                    onChange={this.handleInputChange}  />
+                                {formErrors.invoiceID.length > 0 && (
+                                    <span style={{ color: 'red',fontWeight:'bold' }} className="errorMessage">{formErrors.invoiceID}</span>
                                 )}
                             </div>
                             <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Account No</label>
+                                <label style={{ marginBottom: '5px',fontWeight:'bold' }}>Account No</label>
                                 <input type="number"
-                                    className="form-control"
+                                 className={formErrors.accNo.length > 10 ? "error" : "form-control"}
+                                
                                     name="accNo"
-                                    placeholder="Enter Account No"
+                                    placeholder="Enter Account No          Example:0000123436"
                                     value={this.state.accNo}
-                                    onChange={this.handleInputChange} required />
-                                {formErrors.accNo.length > 8 && (
-                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.accNo}</span>
+                                    onChange={this.handleInputChange}  />
+                                {formErrors.accNo.length > 10 && (
+                                    <span style={{ color: 'red',fontWeight:'bold' }} className="errorMessage">{formErrors.accNo}</span>
                                 )}
                             </div>
                             <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Amount (Rs.)</label>
+                                <label style={{ marginBottom: '5px',fontWeight:'bold' }}>Amount (Rs.)</label>
                                 <input type="number"
-                                    className="form-control"
+                                 className={formErrors.amount.length > 0 ? "error" : "form-control"}
+                                    
                                     name="amount"
                                     placeholder="Enter Amount"
                                     value={this.state.amount}
-                                    onChange={this.handleInputChange} required />
+                                    onChange={this.handleInputChange}  />
                                      {formErrors.amount < 1 || (
-                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.amount}</span>
+                                    <span style={{ color: 'red' ,fontWeight:'bold',fontWeight:'bold' }} className="errorMessage">{formErrors.amount}</span>
                                 )}
                             </div>
                             <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Payment Date</label>
+                                <label style={{ marginBottom: '5px',fontWeight:'bold' }}>Payment Date</label>
                                 <input type="date"
                                     className="form-control"
                                     name="pDate"

@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios';
+import {jsPDF} from 'jspdf'
+import 'jspdf-autotable'
 import { Link } from "react-router-dom";
 
 
@@ -10,6 +12,33 @@ export default class BillHome extends Component{
       bills:[]
     };
   }
+
+  exportPDF = () => {
+    const unit = "pt";
+    const size = "A3"; // Use A1, A2, A3 or A4
+    const orientation = "portrait"; // portrait or landscape
+  
+    const marginLeft = 40;
+    const doc = new jsPDF(orientation, unit, size);
+  
+    doc.setFontSize(15);
+  
+    const title = "Bill Details";
+    const headers = [['Invoice ID','Bill Name','Account No', 'Amount(Rs.)', 'Payment Date']];
+  
+    const data = this.state.bills.map(elt=> [elt.invoiceID, elt.name,elt.accNo,elt.amount,elt.pDate]);
+  
+    let content = {
+      startY: 50,
+      head: headers,
+      body: data
+    };
+  
+    doc.text(title, marginLeft, 40);
+    doc.autoTable(content);
+    doc.save("Bill.pdf")
+  }
+  
 
   componentDidMount(){
     this.retrieveBills();
@@ -64,7 +93,7 @@ handleSearchArea=(e)=>{
               <input style={{border:'1px solid #000'}}
               className="form-control"
               type="search"
-              placeholder="search"
+              placeholder="search                                            🔍"
               name="searchQuery"
               onChange={this.handleSearchArea}></input>
 
@@ -72,13 +101,7 @@ handleSearchArea=(e)=>{
 
         </div>
         
-<table className="table border shadow" className="table table-striped borde" style={{
-                borderRadius:'20px',
-                backgroundColor:'#ffffff',
-                fontFamily:'sans-serif',
-                border: '1px solid',
-                boxShadow: '0 1px 56px -26px #000'
-            }}>
+<table className="table border shadow table table-striped border" style={{fontWeight:'bold'}}>
   <thead >
     <tr>
       <th scope="col">#</th>
@@ -111,8 +134,9 @@ handleSearchArea=(e)=>{
     ))}
   </tbody>
 </table>
-<Link to="/finan/add" className="btn btn-warning"><i class="fas fa-user-plus"></i>&nbsp;Create New Bill</Link>
-
+<Link to="/finan/add" className="btn btn-warning"><i class="fas fa-user-plus"></i>&nbsp;Create New Bill</Link>&nbsp;&nbsp;
+&nbsp;<Link to="/finan/cal" className="btn btn-warning"><i class="fas fa-user-plus"></i>&nbsp;Chart</Link>&nbsp;&nbsp;
+<Link onClick={()=>this.exportPDF()} to="#" className="btn btn-success"><i class="fas fa-download"></i>&nbsp;Download Report</Link>
       </div>
     )
   }

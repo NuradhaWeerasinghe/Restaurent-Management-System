@@ -50,21 +50,21 @@ h1{
     height: 500px;
     margin-top: 230px;   
 }
-.banner_img
-{
-    height: 80px;
-    width: 100%;
-}
-.banner{
-    height: 80px;
-    width: 100%;
-    background : rgb(12, 0, 0);
-}
+
 /* Bill */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
 .container{
     padding-bottom: 50px;
+}
+
+input.error{
+    border: 1px solid red;
+    outline: none;
+    border-radius: 5px;
+    width: 670px;
+    height: 36px;
+    padding: 10px;
 }
 
 .heading{
@@ -161,3 +161,4 @@ span{
 .btnbilll a {
     width: 150px;
 }
+

@@ -2,13 +2,14 @@ const express = require('express');
 const Bills = require('../models/bills');
 
 const router = express.Router();
+
 //save bill
 router.post(`/bill/save`,(req,res)=>{
     let newBill = new Bills(req.body);
     newBill.save((err) =>{
         if(err){
             return res.status(400).json({
-error:err
+    error:err
             });
         }
        // alert("bill Saved success");

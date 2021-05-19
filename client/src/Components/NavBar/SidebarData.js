@@ -66,6 +66,14 @@ export const SidebarData = [
 	path: "/get_R",
 	icon: <GoIcon.GoCalendar />,
 
+	subNav: [
+		{
+			title: "Attendance",
+			path: "/get_at",
+			icon: <IoIcons.IoIosPaper />,
+			cName: "sub-nav",
+		}
+	]
 
 
 },

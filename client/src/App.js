@@ -61,7 +61,7 @@ import itemHome from './Components/items/itemHome';
 import itemView from './Components/items/itemView';
 
 import Footer from './Components/Footer/Footer';
-
+import AttendHome from './Components/AttendHome';
 
 
 
@@ -149,7 +149,7 @@ export default class App extends Component {
           <Route exact path='/update-supplier-order/:id'>
             <UpdateSupplierOrder />
           </Route>
-
+          <Route path="/get_at" component={AttendHome}></Route>
 
 
        

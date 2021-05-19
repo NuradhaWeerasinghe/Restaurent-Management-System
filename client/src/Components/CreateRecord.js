@@ -64,9 +64,9 @@ onSubmit = (e) =>{
 	            <label for="type"> Leave Type : </label>
 	            <select id="type" className="form-control" name="leaveType" onChange={this.handleInputChange} value={this.state.leaveType} required>
 		            <option selected>Choose type...</option>
-		            <option value="Casual">Casual</option>
-		            <option value="Medical">Medical</option>
-		            <option value="Half-Day">Half-Day</option>
+		            <option value="CASUAL">Casual</option>
+		            <option value="MEDICAL">Medical</option>
+		            <option value="HALF-DAY">Half-Day</option>
 	            </select>       
                 </div>      
 
