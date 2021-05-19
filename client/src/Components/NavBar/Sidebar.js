@@ -62,7 +62,7 @@ return (
 		<h1
 			style={{ textAlign: "center",
 					marginLeft: "32%",
-					color: "white",
+					color: "#b78c33",
 					fontFamily:"Sofia"
 				
 				}}

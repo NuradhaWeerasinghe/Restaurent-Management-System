@@ -47,7 +47,7 @@ export default class AddEmployee extends Component {
             formErrors.email = invoiceRegx.test(value)
             ? ""
             : "Didn't match pattern";
-    break;
+            break;
             case "mobileNo":
             formErrors.mobileNo =
             value.length > 10 || value.length > 10
@@ -68,9 +68,8 @@ export default class AddEmployee extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        if(!formValid(this.state.formErrors)){
-            console.error("FORM INVALID-DISPLAY ERROR");
-        }
+        if(formValid(this.state.formErrors)){
+           
 
         const { name, email, address, mobileNo, designation, salary,date } = this.state;
 
@@ -103,6 +102,14 @@ export default class AddEmployee extends Component {
                 )
             };
         });
+    }
+    else{
+        toast(`Your Inserting blank! `, {
+            type: toast.TYPE.ERROR,
+            autoClose: 4000
+        });
+    
+    }
     };
 
     render() {
