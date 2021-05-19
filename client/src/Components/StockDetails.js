@@ -25,47 +25,58 @@ export default class StockDetails extends Component {
     }
     
     render() {
-        const {stockId,stockType,brand,category,amount,rcvQuan,remQuan,rcvDate,expDate,location,supId,sOrderId} = this.state.post;
+        const {stockId,stockType,brand,category,amount,rcvQuan,remQuan,rcvDate,expDate,location,supId,sOrderId,imgLink} = this.state.post;
       return (
+        <div className="shadowBox">
         <div style={{marginTop:'20px'}}>
-            <h4>{stockType}</h4>
+            <h2>{stockType}</h2>
             <hr/>
 
+            <div class="row">
+           <div  className="col-md-6">
+           <img src={imgLink} style={{ width:"500px"}}/>
+           </div>
+
+
+           <div  className="col-md-6">
             <dl className="row">
-                <dt className="col-sm-3">Stock ID</dt>
-                <dd className="col-sm-9">{stockId}</dd>
+                
+                <dt className="col-sm-5">Stock ID</dt>
+                <dd className="col-sm-5">{stockId}</dd>
 
-                <dt className="col-sm-3">Brand</dt>
-                <dd className="col-sm-9">{brand}</dd>
+                <dt className="col-sm-5">Brand</dt>
+                <dd className="col-sm-5">{brand}</dd>
 
-                <dt className="col-sm-3">Category</dt>
-                <dd className="col-sm-9">{category}</dd>
+                <dt className="col-sm-5">Category</dt>
+                <dd className="col-sm-5">{category}</dd>
 
-                <dt className="col-sm-3">Amount (LKR)</dt>
-                <dd className="col-sm-9">{amount}</dd>
+                <dt className="col-sm-5">Amount (LKR)</dt>
+                <dd className="col-sm-5">{amount}</dd>
 
-                <dt className="col-sm-3">Recieved Quantity (kg/l)</dt>
-                <dd className="col-sm-9">{rcvQuan}</dd>
+                <dt className="col-sm-5">Recieved Quantity (kg/l)</dt>
+                <dd className="col-sm-5">{rcvQuan}</dd>
 
-                <dt className="col-sm-3">Remaining Quantity (kg/l)</dt>
-                <dd className="col-sm-9">{remQuan}</dd>
+                <dt className="col-sm-5">Remaining Quantity (kg/l)</dt>
+                <dd className="col-sm-5">{remQuan}</dd>
 
-                <dt className="col-sm-3">Recieved Date</dt>
-                <dd className="col-sm-9">{rcvDate}</dd>
+                <dt className="col-sm-5">Recieved Date</dt>
+                <dd className="col-sm-5">{rcvDate}</dd>
 
-                <dt className="col-sm-3">Expiary Date</dt>
-                <dd className="col-sm-9">{expDate}</dd>
+                <dt className="col-sm-5">Expiary Date</dt>
+                <dd className="col-sm-5">{expDate}</dd>
 
-                <dt className="col-sm-3">Location</dt>
-                <dd className="col-sm-9">{location}</dd>
+                <dt className="col-sm-5">Location</dt>
+                <dd className="col-sm-5">{location}</dd>
 
-                <dt className="col-sm-3">Supplier ID</dt>
-                <dd className="col-sm-9">{supId}</dd>
+                <dt className="col-sm-5">Supplier ID</dt>
+                <dd className="col-sm-5">{supId}</dd>
 
-                <dt className="col-sm-3">Supplier Order ID</dt>
-                <dd className="col-sm-9">{sOrderId}</dd>
+                <dt className="col-sm-5">Supplier Order ID</dt>
+                <dd className="col-sm-5">{sOrderId}</dd>
             </dl>
-           
+            </div>
+            </div>
+        </div>
         </div>
         
       )

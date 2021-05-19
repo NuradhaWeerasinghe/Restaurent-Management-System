@@ -49,6 +49,9 @@ const postSchema = new mongoose.Schema({
     sOrderId:{
         type:String,
         required:true
+    },
+    imgLink:{
+        type:String,
     }
 
 });

@@ -37,6 +37,7 @@ import EditStock from './Components/EditStock';
 
 import StockDetails from './Components/StockDetails';
 import HomeC from './Components/HomeC';
+import SendEmail from './Components/SendEmail';
 
 
 import ViewSuppliers from './Components/Supplier/ViewSuppliers';
@@ -130,7 +131,7 @@ export default class App extends Component {
           <Route path="/add" component={CreateStock}></Route>
           <Route path="/edit/:id" component={EditStock}></Route>
           <Route path="/post/:id" component={StockDetails}></Route>
-
+          <Route path="/email" component={SendEmail}></Route>
           <Route exact path='/supplier'>
             <ViewSuppliers />
           </Route>
