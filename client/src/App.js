@@ -65,8 +65,7 @@ import Footer from './Components/Footer/Footer';
 import AttendHome from './Components/AttendHome';
 
 
-import OrderStatusView from './Components/delivery/OrderStatusView';
-import UpdateDeliveryStatus from './Components/delivery/UpdateDeliveryStatus';
+
 
 
 
@@ -111,6 +110,7 @@ export default class App extends Component {
           <Route path="/add_R" component={CreateRecord}></Route>
           <Route path="/edit_R/:id" component={EditRecord}></Route>
           <Route path="/attend" component={CreateAttendance}></Route>
+
           {/* Delivery Routes*/}
           <Route path='/add_driver' component={AddDriver}></Route>
           <Route path='/add_vehicle' component={AddVehicle}></Route>
@@ -120,8 +120,7 @@ export default class App extends Component {
           <Route path='/update_vehicle/:id' component={updateVehicle}></Route>
           <Route path="/ManageDelivery" component={manageDelivery}></Route>
           <Route path='/EditOrderStatus' component={updateOrderStatus}></Route>
-          <Route path='/OrderStatusView' component={OrderStatusView}></Route>
-          <Route path='/update_delivery/:id' component={UpdateDeliveryStatus}></Route> {/** End of Delivery Routes */}
+
           <Route path="/finan" exact component={BillHome}></Route>
           <Route path="/finan/add" component={CreateBill}></Route>
           <Route path="/finan/edit/:id" component={EditBill}></Route>
