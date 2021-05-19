@@ -134,14 +134,14 @@ export default class EditStock extends Component {
                     amount:res.data.post.amount,
                     rcvQuan:res.data.post.rcvQuan,
                     remQuan:res.data.post.remQuan,
-                    rcvDate:res.data.post.rcvDate,
-                    expDate:res.data.post.expDate,
+                    rcvDate:res.data.post.rcvDate.substring(0,10),
+                    expDate:res.data.post.expDate.substring(0,10),
                     location:res.data.post.location,
                     supId:res.data.post.supId,
                     sOrderId:res.data.post.sOrderId,
                 });
 
-                console.log(this.state.post);
+                console.log(res.data.post);
             }
         });
     }
@@ -150,12 +150,19 @@ export default class EditStock extends Component {
         const {formErrors}= this.state;
 
         return (
-          <div className="col-md-8 mt-4 mx-auto">
-              <h1 className="h3 mb-3 font-weight-normal">Edit stock</h1>
+            <div class="row">
+            <div  className="col-md-6">
+            <img src="/Images/inventory2.png"  alt="inventory" style={{height:'600px' , width:'600px', marginTop:'100px'}}/>
+            </div>
+
+            <div  className="col-md-6">
+            <div className="shadowBox">
+
+              <h6 className="h3 mb-3 font-weight-normal">Edit stock details</h6>
               <from className="needs-validation" noValidate>
                   <div className="form-group" style={{marginBottom:'15px'}}>
                       <label style={{marginBottom:'5px'}}>Stock ID:</label>
-                      <input type="text"
+                      <input type="text" required
                       className="form-control"
                       name="stockId"
                       placeholder="Enter Stock ID"
@@ -169,7 +176,7 @@ export default class EditStock extends Component {
   
                   <div className="form-group" style={{marginBottom:'15px'}}>
                       <label style={{marginBottom:'5px'}}>Stock Type:</label>
-                      <input type="text"
+                      <input type="text" required
                       className="form-control"
                       name="stockType"
                       placeholder="Enter Stock Type"
@@ -179,7 +186,7 @@ export default class EditStock extends Component {
   
                   <div className="form-group" style={{marginBottom:'15px'}}>
                       <label style={{marginBottom:'5px'}}>Brand:</label>
-                      <input type="text"
+                      <input type="text" required
                       className="form-control"
                       name="brand"
                       placeholder="Enter Brand"
@@ -189,7 +196,7 @@ export default class EditStock extends Component {
   
                   <div className="form-group" style={{marginBottom:'15px'}}>
                       <label style={{marginBottom:'5px'}}>Category:</label>
-                      <input type="text"
+                      <input type="text" required
                       className="form-control"
                       name="category"
                       placeholder="Enter Category"
@@ -199,7 +206,7 @@ export default class EditStock extends Component {
   
                   <div className="form-group" style={{marginBottom:'15px'}}>
                       <label style={{marginBottom:'5px'}}>Amount:</label>
-                      <input type="number"
+                      <input type="number" required
                       className="form-control"
                       name="amount"
                       placeholder="Enter Amount (LKR)"
@@ -209,7 +216,7 @@ export default class EditStock extends Component {
 
                   <div className="form-group" style={{marginBottom:'15px'}}>
                       <label style={{marginBottom:'5px'}}>Received Quantity:</label>
-                      <input type="number"
+                      <input type="number" required
                       className="form-control"
                       name="rcvQuan"
                       placeholder="Enter Receieved Quantity (kg/l)"
@@ -219,7 +226,7 @@ export default class EditStock extends Component {
 
                   <div className="form-group" style={{marginBottom:'15px'}}>
                       <label style={{marginBottom:'5px'}}>Remaining Quantity:</label>
-                      <input type="number"
+                      <input type="number" required
                       className="form-control"
                       name="remQuan"
                       placeholder="Enter Remaining Quantity (kg/l)"
@@ -229,7 +236,7 @@ export default class EditStock extends Component {
 
                   <div className="form-group" style={{marginBottom:'15px'}}>
                       <label style={{marginBottom:'5px'}}>Received Date:</label>
-                      <input type="date"
+                      <input type="date" required
                       className="form-control"
                       name="rcvDate"
                       placeholder="Enter Receieved Date"
@@ -239,7 +246,7 @@ export default class EditStock extends Component {
 
                   <div className="form-group" style={{marginBottom:'15px'}}>
                       <label style={{marginBottom:'5px'}}>Expiary Date:</label>
-                      <input type="date"
+                      <input type="date" required
                       className="form-control"
                       name="expDate"
                       placeholder="Enter Expiary Date"
@@ -249,7 +256,7 @@ export default class EditStock extends Component {
 
                   <div className="form-group" style={{marginBottom:'15px'}}>
                       <label style={{marginBottom:'5px'}}>Location:</label>
-                      <input type="text"
+                      <input type="text" required
                       className="form-control"
                       name="location"
                       placeholder="Enter Location"
@@ -259,7 +266,7 @@ export default class EditStock extends Component {
   
                   <div className="form-group" style={{marginBottom:'15px'}}>
                       <label style={{marginBottom:'5px'}}>Supplier ID:</label>
-                      <input type="text"
+                      <input type="text" required
                       className="form-control"
                       name="supId"
                       placeholder="Enter Supplier ID"
@@ -273,7 +280,7 @@ export default class EditStock extends Component {
   
                   <div className="form-group" style={{marginBottom:'15px'}}>
                       <label style={{marginBottom:'5px'}}>Supplier Order ID:</label>
-                      <input type="text"
+                      <input type="text" required
                       className="form-control"
                       name="sOrderId"
                       placeholder="Enter Supplier Order ID"
@@ -285,12 +292,13 @@ export default class EditStock extends Component {
                     )}
                   </div>
   
-                  <button className="btn btn-success" type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}>
+                  <button className="btn btn-outline-success" type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}>
                       <i className="far fa-check-square"></i>
-                      &nbsp; Update
+                      &nbsp; Save Changes
                   </button>
               </from>
-              
+              </div>
+              </div>
           </div>
           
         )
