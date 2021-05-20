@@ -47,7 +47,7 @@ app.use(itemRoutes);
 
 app.use(driverRouter);
 app.use(vehicleRouter);
-app.use(deliveryRouter);
+app.use(deliveryRouter);{/** end of delivery */}
 app.use(postRoutes);
 
 app.use('/api/supplier', supplierRoutes);

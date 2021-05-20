@@ -15,7 +15,7 @@ export default class FetchAllDeliveries extends Component {
     };
   }
 
-    // Creating report 
+  // Creating report 
     exportPDF = () => {
       const unit = "pt";
       const size = "A4"; // Use A1, A2, A3 or A4

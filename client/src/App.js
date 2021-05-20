@@ -14,7 +14,7 @@ import CreateAttendance from './Components/CreateAttendance';
 import CreateRecord from './Components/CreateRecord';
 import EditRecord from './Components/EditRecord';
 import RecordHome from './Components/RecordHome';
-
+/** delivery*/
 import AddDriver from './Components/delivery/AddDriver';
 import AddVehicle from './Components/delivery/AddVehicle';
 import fetchDrivers from './Components/delivery/FetchAllDrivers';
@@ -23,7 +23,7 @@ import manageDelivery from './Components/delivery/ManageDelivery';
 import updateDriver from './Components/delivery/UpdateDriver';
 import updateVehicle from './Components/delivery/UpdateVehicle';
 import EditOrderStatus from './Components/delivery/EditOrderStatus';
-import UpdateDeliveryStatus from './Components/delivery/UpdateDeliveryStatus';
+import UpdateDeliveryStatus from './Components/delivery/UpdateDeliveryStatus';/** end of delivery*/
 
 import BillDetails from './Components/BillDetails';
 import CreateBill from './Components/CreateBill';
