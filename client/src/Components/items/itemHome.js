@@ -28,7 +28,7 @@ export default class orderHome extends Component {
     const title = "Items";
     const headers = [['ItemId','Name','Price(LKR)', 'Description','Category' ]];
   
-    const data = this.state.items.map(elt=> [elt.itemId, elt.name,elt.price,elt.description,elt.category ]);
+    const data = this.state.items.map(elt=> [elt.itemId, elt.title,elt.price,elt.description,elt.category ]);
   
     let content = {
       startY: 50,
@@ -74,8 +74,8 @@ export default class orderHome extends Component {
       item.description.toUpperCase().includes(searchKey) ||
       item.category.toLowerCase().includes(searchKey) ||
       item.category.toUpperCase().includes(searchKey) ||
-      item.name.toLowerCase().includes(searchKey) ||
-      item.name.toUpperCase().includes(searchKey)
+      item.title.toLowerCase().includes(searchKey) ||
+      item.title.toUpperCase().includes(searchKey)
     )
     this.setState({ items: result })
   }
@@ -125,7 +125,7 @@ export default class orderHome extends Component {
               <tr key={index}>
                 <th scope="row">{index + 1}</th>
                 <td><a href={`/item/item/${items._id}`} style={{ textDecoration: 'none' }}>{items.itemId}</a></td>
-                <td>{items.name}</td>
+                <td>{items.title}</td>
                 <td>{items.price}</td>
                 <td>{items.description}</td>
                 <td>{items.category}</td>
