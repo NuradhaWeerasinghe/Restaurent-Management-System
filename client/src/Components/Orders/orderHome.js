@@ -124,7 +124,7 @@ export default class orderHome extends Component {
 
         </div>
 
-        <table className="table border shadow  table table-striped border " style={{width:'114  %',marginLeft:'-80px'}}>
+        <table className="table border shadow  table table-striped border " style={{width:'115%',marginLeft:'-90px'}}>
           <thead>
             <tr>
               <th scope="col">#</th>
