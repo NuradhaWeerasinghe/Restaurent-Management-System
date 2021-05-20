@@ -15,7 +15,7 @@ export default class editOrder extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            orderId: "",
+            _id: "",
             total: Number,
             phone: Number,
             name: "",
@@ -25,7 +25,7 @@ export default class editOrder extends Component {
             status:"",
 
             formErrors: {
-                orderId: "",
+                _id: "",
                 total: Number,
                 phone: Number,
             }
@@ -37,7 +37,7 @@ export default class editOrder extends Component {
         let formErrors = this.state.formErrors;
         switch (name) {
             case "orderId":
-                formErrors.orderId =
+                formErrors._id =
                     value.length < 3
                         ? "Minimum charactors must be  more than 3"
                         : "";
@@ -80,9 +80,9 @@ export default class editOrder extends Component {
         }
 
         const id = this.props.match.params.id;
-        const { orderId, total,phone, name, address, deliveryMethod, paymentMethod,status } = this.state;
+        const { _id, total,phone, name, address, deliveryMethod, paymentMethod,status } = this.state;
         const data = {
-            orderId: orderId,
+            _id: _id,
             total: total,
             phone:phone,
             name:name,
@@ -100,7 +100,7 @@ export default class editOrder extends Component {
                 });
                 this.setState(
                     {
-                        orderId: "",
+                        _id: "",
                         total: Number,
                         phone: Number,
                         name: "",
@@ -119,7 +119,7 @@ export default class editOrder extends Component {
         axios.get(`http://localhost:8000/order/${id}`).then((res) => {
             if (res.data.success) {
                 this.setState({
-                    orderId: res.data.order.orderId,
+                    _id: res.data.order._id,
                     total: res.data.order.total,
                     phone: res.data.order.phone,
                     deliveryMethod: res.data.order.deliveryMethod,
@@ -151,12 +151,12 @@ export default class editOrder extends Component {
                                 <label style={{ marginBottom: '5px' }}>Order Id</label>
                                 <input type="text"
                                     className="form-control"
-                                    name="orderId"
+                                    name="_id"
                                     disabled
                                     placeholder="Enter Order Id"
-                                    value={this.state.orderId}
+                                    value={this.state._id}
                                     onChange={this.handleInputChange} />
-                                {formErrors.orderId.length > 5 && (
+                                {formErrors._id.length > 5 && (
                                     <span style={{ color: 'red' }} className="errorMessage">{formErrors.orderId}</span>
                                 )}
                             </div>
@@ -242,6 +242,7 @@ export default class editOrder extends Component {
                                         <option values="Cancelled">Cancelled</option>
                                         </select>
                             </div>
+                            
 
                             <div class="form-group btnupdate col-12">
                                 <button type="submit" className="btn btn-primary ordersub_btn" >Update</button>&nbsp;&nbsp;
