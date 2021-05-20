@@ -14,7 +14,7 @@ import CreateAttendance from './Components/CreateAttendance';
 import CreateRecord from './Components/CreateRecord';
 import EditRecord from './Components/EditRecord';
 import RecordHome from './Components/RecordHome';
-
+/** delivery*/
 import AddDriver from './Components/delivery/AddDriver';
 import AddVehicle from './Components/delivery/AddVehicle';
 import fetchDrivers from './Components/delivery/FetchAllDrivers';
@@ -22,8 +22,8 @@ import fetchVehicles from './Components/delivery/FetchAllVehicles';
 import manageDelivery from './Components/delivery/ManageDelivery';
 import updateDriver from './Components/delivery/UpdateDriver';
 import updateVehicle from './Components/delivery/UpdateVehicle';
-import updateOrderStatus from './Components/delivery/EditOrderStatus';
-
+import EditOrderStatus from './Components/delivery/EditOrderStatus';
+import UpdateDeliveryStatus from './Components/delivery/UpdateDeliveryStatus';/** end of delivery*/
 
 import BillDetails from './Components/BillDetails';
 import CreateBill from './Components/CreateBill';
@@ -110,7 +110,6 @@ export default class App extends Component {
           <Route path="/add_R" component={CreateRecord}></Route>
           <Route path="/edit_R/:id" component={EditRecord}></Route>
           <Route path="/attend" component={CreateAttendance}></Route>
-
           {/* Delivery Routes*/}
           <Route path='/add_driver' component={AddDriver}></Route>
           <Route path='/add_vehicle' component={AddVehicle}></Route>
@@ -119,8 +118,9 @@ export default class App extends Component {
           <Route path='/update_driver/:id' component={updateDriver}></Route>
           <Route path='/update_vehicle/:id' component={updateVehicle}></Route>
           <Route path="/ManageDelivery" component={manageDelivery}></Route>
-          <Route path='/EditOrderStatus' component={updateOrderStatus}></Route>
-
+          <Route path='/EditOrderStatus' component={EditOrderStatus}></Route>
+          <Route path='/update_delivery/:id' component={UpdateDeliveryStatus}></Route>
+          
           <Route path="/finan" exact component={BillHome}></Route>
           <Route path="/finan/add" component={CreateBill}></Route>
           <Route path="/finan/edit/:id" component={EditBill}></Route>

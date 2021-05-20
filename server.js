@@ -17,7 +17,7 @@ const itemRoutes = require('./routes/items');
 
 const driverRouter = require("./routes/drivers");
 const vehicleRouter = require("./routes/vehicles");
-
+const deliveryRouter = require("./routes/deliveries");
 const billRoutes = require('./routes/bills');
 
 const postRoutes = require('./routes/posts');
@@ -47,7 +47,7 @@ app.use(itemRoutes);
 
 app.use(driverRouter);
 app.use(vehicleRouter);
-
+app.use(deliveryRouter);{/** end of delivery */}
 app.use(postRoutes);
 
 app.use('/api/supplier', supplierRoutes);
