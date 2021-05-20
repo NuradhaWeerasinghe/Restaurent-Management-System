@@ -16,7 +16,7 @@ export default class editItem extends Component {
         super(props);
         this.state = {
             itemId: "",
-            name: "",
+            title: "",
             price: Number,
             description: "",
             category: "",
@@ -24,7 +24,7 @@ export default class editItem extends Component {
             formErrors: {
                 itemId: "",
                 price: 0,
-                name: "",
+                title: "",
                 description: "",
             }
         };
@@ -48,8 +48,8 @@ export default class editItem extends Component {
                         : "";
                 break;
 
-            case "name":
-                formErrors.name =
+            case "title":
+                formErrors.title =
                     value.length < 5
                         ? "Must contain Atleast 5 characters "
                         : "";
@@ -80,10 +80,10 @@ export default class editItem extends Component {
             console.error("FORM INVALID-DISPLAY ERROR");
         }
         const id = this.props.match.params.id;
-        const { itemId, name, price, description, category } = this.state;
+        const { itemId, title, price, description, category } = this.state;
         const data = {
             itemId: itemId,
-            name: name,
+            title: title,
             price: price,
             description: description,
             category: category
@@ -98,7 +98,7 @@ export default class editItem extends Component {
                 this.setState(
                     {
                         itemId: "",
-                        name: "",
+                        title: "",
                         price: Number,
                         description: "",
                         category: "",
@@ -114,7 +114,7 @@ export default class editItem extends Component {
             if (res.data.success) {
                 this.setState({
                     itemId: res.data.item.itemId,
-                    name: res.data.item.name,
+                    title: res.data.item.title,
                     price: res.data.item.price,
                     description: res.data.item.description,
                     category: res.data.item.category,
@@ -155,12 +155,12 @@ export default class editItem extends Component {
                                 <label style={{ marginBottom: '5px' }}>Name</label>
                                 <input type="text"
                                     className="form-control"
-                                    name="name"
+                                    name="title"
                                     placeholder="Enter Item name"
-                                    value={this.state.name}
+                                    value={this.state.title}
                                     onChange={this.handleInputChange} />
-                                {formErrors.name.length < 5 && (
-                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.name}</span>
+                                {formErrors.title.length < 5 && (
+                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.title}</span>
                                 )}
                             </div>
                             <div className="form-group" style={{ marginBottom: '15px' }}>

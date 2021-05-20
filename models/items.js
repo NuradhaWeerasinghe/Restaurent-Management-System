@@ -5,7 +5,7 @@ const itemSchema = new mongoose.Schema({//Create schema for creating an order
         type : String,
         required : true//Backend validtion 
     }, 
-    name: {
+    title: {
         type : String,
         required : true //Backend validtion 
     }, 
@@ -20,9 +20,18 @@ const itemSchema = new mongoose.Schema({//Create schema for creating an order
         required : true //Backend validtion 
     }, 
 
+    image: {
+        type:String,
+        required : true ,//Backend validtion 
+        default :"/images/order1.jpg ",
+    },
     category: {
         type : String,
         required : true //Backend validtion 
     },  
+    availableSizes: {
+        type:[String],
+        default:["Mains"]
+    },
 });
 module.exports = mongoose.model('Items',itemSchema);

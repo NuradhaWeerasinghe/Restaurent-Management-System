@@ -17,7 +17,7 @@ export default class createItem extends Component {
         super(props);
         this.state = {
             itemId: "",
-            name: "",
+            title: "",
             price: Number,
             description: "",
             category: "",
@@ -25,7 +25,7 @@ export default class createItem extends Component {
             formErrors: {
                 itemId: "",
                 price: 0,
-                name: "",
+                title: "",
                 description: "",
             }
         }
@@ -49,8 +49,8 @@ export default class createItem extends Component {
                         : "";
                 break;
 
-            case "name":
-                formErrors.name =
+            case "title":
+                formErrors.title =
                     value.length < 5
                         ? "Must contain Atleast 5 characters "
                         : "";
@@ -81,10 +81,10 @@ export default class createItem extends Component {
             console.error("FORM INVALID-DISPLAY ERROR");
         }
 
-        const { itemId, name, price, description, category } = this.state;
+        const { itemId, title, price, description, category } = this.state;
         const data = {
             itemId: itemId,
-            name: name,
+            title: title,
             price: price,
             description: description,
             category: category,
@@ -99,7 +99,7 @@ export default class createItem extends Component {
                 this.setState(
                     {
                         itemId: "",
-                        name: "",
+                        title: "",
                         price: Number,
                         description: "",
                         category: "",
@@ -139,12 +139,12 @@ export default class createItem extends Component {
                                 <label style={{ marginBottom: '5px' }}>Name</label>
                                 <input type="text"
                                     className="form-control"
-                                    name="name"
+                                    name="title"
                                     placeholder="Enter Item name"
-                                    value={this.state.name}
+                                    value={this.state.title}
                                     onChange={this.handleInputChange} required />
-                                {formErrors.name.length > 5 && (
-                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.name}</span>
+                                {formErrors.title.length > 5 && (
+                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.title}</span>
                                 )}
 
                             </div>
