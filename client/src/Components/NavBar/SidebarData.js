@@ -99,7 +99,7 @@ export const SidebarData = [
 	icon: <IconName.AiOutlineDollar/>,
 },
 {
-	title: "Delivey Managemet",
+	title: "Delivery Managemet",
 	path: "/ManageDelivery",
 	icon: <FaIcons.FaBiking />,
 },
