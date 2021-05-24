@@ -17,7 +17,7 @@ export default class FetchAllDrivers extends Component{
   // Creating report 
   exportPDF = () => {
     const unit = "pt";
-    const size = "A4"; // Use A1, A2, A3 or A4
+    const size = "A3"; // Use A1, A2, A3 or A4
     const orientation = "portrait"; // portrait or landscape
   
     const marginLeft = 40;
