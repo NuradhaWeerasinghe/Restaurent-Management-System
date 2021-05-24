@@ -11,6 +11,8 @@ export default class OrderStatusView extends Component{
         };
     }
     
+
+
     shdowStatus(){
 
       let i = 0;

@@ -18,7 +18,7 @@ export default class FetchAllDeliveries extends Component {
   // Creating report 
     exportPDF = () => {
       const unit = "pt";
-      const size = "A4"; // Use A1, A2, A3 or A4
+      const size = "A3"; // Use A1, A2, A3 or A4
       const orientation = "portrait"; // portrait or landscape
     
       const marginLeft = 40;
@@ -143,11 +143,12 @@ export default class FetchAllDeliveries extends Component {
               </table>
             </div>
           </div>
-          <div className="row">
-            <div className="col-9"></div>
-            <div className="col-3 addv">                      
-              <Link onClick={()=>this.exportPDF()} to="#" className="btn btn-success"><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link>
+          <div className="row" style={{marginTop:'50px'}}>
+            <div className="col-4"></div>
+            <div className="col-4 addv d-flex justify-content-center">
+                <Link onClick={()=>this.exportPDF()} to="#" className="btn btn-success"><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link>
             </div>                  
+            <div className="col-4"></div>
           </div>
         </div>
       </div>

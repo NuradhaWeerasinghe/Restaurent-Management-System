@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import axios from "axios";
-import { Link } from "react-router-dom";
-import {jsPDF} from 'jspdf'
-import 'jspdf-autotable'
 import './stylesDelivery.css';
 
 
@@ -13,7 +10,7 @@ export default class FetchAllDeliveries extends Component {
       deliveries: []
     };
   }
-    
+  
     
   componentDidMount(){
     this.retrieveDeliveries();
