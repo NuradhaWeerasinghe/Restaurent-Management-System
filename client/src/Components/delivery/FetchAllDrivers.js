@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast, zoom, Bounce } from "react-toastify";
+import {jsPDF} from 'jspdf'
+import 'jspdf-autotable'
 import  './stylesDelivery.css';
 
 export default class FetchAllDrivers extends Component{
@@ -11,6 +14,32 @@ export default class FetchAllDrivers extends Component{
         };
       }
 
+    // Creating report 
+  exportPDF = () => {
+    const unit = "pt";
+    const size = "A4"; // Use A1, A2, A3 or A4
+    const orientation = "portrait"; // portrait or landscape
+  
+    const marginLeft = 40;
+    const doc = new jsPDF(orientation, unit, size);
+  
+    doc.setFontSize(15);
+  
+    const title = "Driver Details";
+    const headers = [['Driver No','Name','Licence No','NIC', 'Mobile', 'Address' ]];
+  
+    const data = this.state.drivers.map(elt=> [elt.driverNo, elt.name,elt.licenceNo,elt.nic,elt.mobile,elt.address ]);
+  
+    let content = {
+      startY: 50,
+      head: headers,
+      body: data
+    };
+
+    doc.text(title, marginLeft, 40);
+    doc.autoTable(content);
+    doc.save("Driver List.pdf")
+  }
       componentDidMount(){
         this.retrieveDrivers();
       }
@@ -33,7 +62,7 @@ export default class FetchAllDrivers extends Component{
         })
       }      
 
-      //Search a driver function//Search a driver function
+      //Search a driver function
       filterData(drivers,searchKey){
         const result=drivers.filter((driver)=>
         driver.driverNo.toLowerCase().includes(searchKey)||
@@ -123,7 +152,8 @@ export default class FetchAllDrivers extends Component{
                     <div className="row">
                         <div className="col-9"></div>
                         <div className="col-3 addv">
-                            <a href="/add_driver" type="button" class="btn btn-lg" ><i class="fas fa-user-plus"></i>&nbsp;&nbsp;Create New Driver</a>
+                            <a href="/add_driver" type="button" class="btn btn-lg" ><i class="fas fa-user-plus"></i>&nbsp;&nbsp;Create New Driver</a><br/><br/>
+                            <Link onClick={()=>this.exportPDF()} to="#" className="btn btn-success"><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link>
                         </div>                  
                     </div>
                 </div>

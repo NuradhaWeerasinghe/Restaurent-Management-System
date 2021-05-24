@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast, zoom, Bounce } from "react-toastify";
+import {jsPDF} from 'jspdf'
+import 'jspdf-autotable'
 import  './stylesDelivery.css';
 
 export default class FetchAllVehicles extends Component{
@@ -12,6 +15,34 @@ export default class FetchAllVehicles extends Component{
         };
       }
 
+    // Creating report 
+    exportPDF = () => {
+        const unit = "pt";
+        const size = "A4"; // Use A1, A2, A3 or A4
+        const orientation = "portrait"; // portrait or landscape
+      
+        const marginLeft = 40;
+        const doc = new jsPDF(orientation, unit, size);
+      
+        doc.setFontSize(15);
+      
+        const title = "Vehicle Details";
+        const headers = [['Vehicle No','Model Name','Vehicle type','Owner', 'Registered Date' ]];        
+        
+        const data = this.state.vehicles.map(elt=> [elt.vehicleNo, elt.modelName,elt.type,elt.owner,elt.registerDate ]);
+      
+        let content = {
+          startY: 50,
+          head: headers,
+          body: data
+        };
+    
+        doc.text(title, marginLeft, 40);
+        doc.autoTable(content);
+        doc.save("Vehicle List.pdf")
+      }
+     
+      
       componentDidMount(){
         this.retrieveVehicles();
       }
@@ -125,7 +156,8 @@ export default class FetchAllVehicles extends Component{
                     <div className="row">
                         <div className="col-9"></div>
                         <div className="col-3 addv">
-                            <a href="/add_vehicle" type="button" class="btn btn-lg" ><i class="fas fa-motorcycle"></i>&nbsp;&nbsp;Create New Vehicle</a>
+                            <a href="/add_vehicle" type="button" class="btn btn-lg" ><i class="fas fa-motorcycle"></i>&nbsp;&nbsp;Create New Vehicle</a><br/><br/>
+                            <Link onClick={()=>this.exportPDF()} to="#" className="btn btn-success"><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link>
                         </div>                  
                     </div>
                 </div>
