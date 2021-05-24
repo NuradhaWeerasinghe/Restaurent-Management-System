@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
 .containerTop{
@@ -151,4 +152,113 @@ span{
     position: absolute;
     top: 15px;
     left: 25px
+}
+
+
+/***************************************     
+        Orderstatus view        
+        
+***************************************/
+
+:root {
+    --primary-color: #00c462;
+    --primary-color-lighter: rgb(255, 36, 36);
+    --primary-color-darker: darkred;
+    --back-ground-color: #ffffff;
+    --secondar-back-ground-color: #f5f5f5;
+    --dark-color: #000000;
+    --grey-color: #ccc;
+    --light-color: #ffffff;
+}
+/*#c40000*/
+
+* {
+    box-sizing: border-box;
+}
+
+
+#myProgress {
+  	position: relative;
+}
+
+#myProgress::Before {
+    content: "";
+    position: absolute;
+    background-color: var(--secondar-back-ground-color);
+    height: 10px;
+    width: 100%;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+}
+
+#myBar {
+  	width: 1%;
+  	height: 10px;
+  	top: 40%;
+  	position: absolute;
+  	background-color: var(--primary-color);
+}
+
+
+
+.circles-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    width: 700px;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    background-color: var(--light-color);
+    transition: 0.4s ease;
+}
+
+.circle h3 {
+    position: absolute;
+    left: 28%;
+    top: 20%;
+    font-size: 20px;
+    color: var(--grey-color);
+}
+
+.circle.active {
+    background-color: var(--primary-color);
+}
+
+.circle.active h3 {
+    color: var(--light-color);
+}
+
+.circle.active i {
+    margin-top: 30%;
+    color: var(--light-color);
+}
+
+.para-container {
+    display: flex;    
+    max-width: 100%;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+
+.content{
+	
+	margin-right: -10px;
+}
+
+.small-box{
+    padding-left: 260px;
+    padding-right: 260px;
+    text-align: center;
+}
+
+.data{
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
