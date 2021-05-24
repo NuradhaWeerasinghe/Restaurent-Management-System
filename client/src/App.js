@@ -8,8 +8,6 @@ import AddEmployee from './Components/Employee/AddEmployee';
 import UpdateEmployee from './Components/Employee/UpdateEmployee';
 import GetSpecific from './Components/Employee/GetSpecific';
 
-
-
 import CreateAttendance from './Components/CreateAttendance';
 import CreateRecord from './Components/CreateRecord';
 import EditRecord from './Components/EditRecord';
@@ -23,7 +21,10 @@ import manageDelivery from './Components/delivery/ManageDelivery';
 import updateDriver from './Components/delivery/UpdateDriver';
 import updateVehicle from './Components/delivery/UpdateVehicle';
 import EditOrderStatus from './Components/delivery/EditOrderStatus';
-import UpdateDeliveryStatus from './Components/delivery/UpdateDeliveryStatus';/** end of delivery*/
+import UpdateDeliveryStatus from './Components/delivery/UpdateDeliveryStatus';
+import OrderStatusView from './Components/delivery/OrderStatusView';
+import MyOrders from './Components/delivery/MyOrders';/** end of delivery*/
+
 
 import BillDetails from './Components/BillDetails';
 import CreateBill from './Components/CreateBill';
@@ -91,8 +92,6 @@ export default class App extends Component {
 
 
 
-
-
           {/* Order Routes*/}
           <Route path="/order/" exact component={orderHome}></Route>
           <Route path="/order/add" component={createOrder}></Route>
@@ -120,6 +119,8 @@ export default class App extends Component {
           <Route path="/ManageDelivery" component={manageDelivery}></Route>
           <Route path='/EditOrderStatus' component={EditOrderStatus}></Route>
           <Route path='/update_delivery/:id' component={UpdateDeliveryStatus}></Route>
+          <Route path='/delivery/:id' exact component={OrderStatusView}></Route>
+          <Route path='/MyOrders' component={MyOrders}></Route> {/* end of Delivery Routes*/}
           
           <Route path="/finan" exact component={BillHome}></Route>
           <Route path="/finan/add" component={CreateBill}></Route>
