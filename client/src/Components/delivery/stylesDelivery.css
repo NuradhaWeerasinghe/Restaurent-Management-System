@@ -94,6 +94,16 @@ span{
     color:#000;
 }
 
+.addv .report{
+    border-radius: 20px;
+    width: 80%;
+    height: 40%;
+    font-size: 20px;
+    background-color: #26b85e;
+    color: rgba(255, 255, 255, 0.801);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);    
+}
+
 .shadowBox{
     margin-top: 40px;
     padding:30px;

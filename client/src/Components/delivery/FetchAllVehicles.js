@@ -157,7 +157,7 @@ export default class FetchAllVehicles extends Component{
                         <div className="col-9"></div>
                         <div className="col-3 addv">
                             <a href="/add_vehicle" type="button" class="btn btn-lg" ><i class="fas fa-motorcycle"></i>&nbsp;&nbsp;Create New Vehicle</a><br/><br/>
-                            <Link onClick={()=>this.exportPDF()} to="#" className="btn btn-success"><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link>
+                            <a onClick={()=>this.exportPDF()} to="#" className="btn report"><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</a>
                         </div>                  
                     </div>
                 </div>

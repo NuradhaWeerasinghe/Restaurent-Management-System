@@ -153,7 +153,7 @@ export default class FetchAllDrivers extends Component{
                         <div className="col-9"></div>
                         <div className="col-3 addv">
                             <a href="/add_driver" type="button" class="btn btn-lg" ><i class="fas fa-user-plus"></i>&nbsp;&nbsp;Create New Driver</a><br/><br/>
-                            <Link onClick={()=>this.exportPDF()} to="#" className="btn btn-success"><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link>
+                            <a onClick={()=>this.exportPDF()} to="#" className="btn report"><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</a>
                         </div>                  
                     </div>
                 </div>
