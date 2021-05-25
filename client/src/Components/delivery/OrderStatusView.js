@@ -23,7 +23,7 @@ export default class OrderStatusView extends Component{
           let width = 1;
           let id = setInterval(frame, 10);
           function frame() {
-            if (width > 50) {
+            if (width > 75) {
               clearInterval(id);
               width--;
               i = 0;
@@ -77,14 +77,13 @@ export default class OrderStatusView extends Component{
               <div className="col-4">
                 <h6>Order No : 	&nbsp;<i>{orderNo}</i></h6>
                 <h6>Customer Name : &nbsp;<i>{custName}</i></h6>
-                <h6>Order Date : &nbsp;<i>{orderDate}</i></h6>
                 <h6>Address : &nbsp;<i>{address}</i></h6>
               </div>
               <div className="col-4"></div>
               <div className="col-3">
                 <h6>Driver No : &nbsp;<i>{driverNo}</i></h6>
-                <h6>Total : &nbsp;<i>{total}</i></h6>                
-                <h6>Status : &nbsp;<i>{status}</i></h6>                
+                <h6>Order Date : &nbsp;<i>{orderDate}</i></h6>
+                <h6>Total : &nbsp;<i>{total}</i></h6>                              
               </div>
             </div>
             <div className="row small-box">

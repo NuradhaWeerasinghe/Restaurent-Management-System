@@ -69,6 +69,16 @@ return (
 		>
 			High Garden Resturant 🍽️
 		</h1>
+
+		<a href="/SignIn" style={{
+			textAlign:'right',
+			textDecoration:'none',
+			color: '#ffff',
+			marginLeft:'25%'
+		}}
+		>
+			Sign In
+		</a>
 		
 		</Nav>
 		<SidebarNav sidebar={sidebar}>
