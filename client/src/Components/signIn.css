@@ -1,0 +1,87 @@
+
+/** SignIn page */
+
+body{
+    /**background-image: url(images/back.jpg);*/
+    background-size: cover;
+}
+
+.shadowBox{
+    margin-top: 40px;
+    padding:30px;
+    border-radius: 10px;
+    background-color: #fff;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(images/back3.jpg);
+    background-size: cover;
+    opacity: 0.8;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);    
+    /**box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);    */
+}
+
+.h3{
+    text-align: center;
+    font-size: 50px;
+    color: white;
+}
+
+label{
+    margin-bottom: 10px;
+    color: #ffff
+}
+
+.textbox{
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 2px solid white;
+}
+
+i{
+    color: white;
+    margin-top: 10px;
+}
+
+.textbox input{
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 18px;
+    width: 80px;
+    float: left;
+    margin-top: 5px;
+}
+
+.textbox input:focus{
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 18px;
+    width: 80px;
+    float: left;
+    margin-top: 5px;
+    box-shadow: none;
+    
+}
+
+.textbox input::placeholder {
+    color: rgb(243, 243, 243);
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: rgb(243, 243, 243);;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color: rgb(243, 243, 243);;
+  }
+
+  .signin button{
+    color: whitesmoke;
+    font-size: 20px;
+    border-radius: 20px;
+  }

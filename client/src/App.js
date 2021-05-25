@@ -65,7 +65,7 @@ import itemView from './Components/items/itemView';
 import Footer from './Components/Footer/Footer';
 import AttendHome from './Components/AttendHome';
 
-
+import SignIn from './Components/SignIn'
 
 
 
@@ -98,7 +98,7 @@ export default class App extends Component {
           <Route path="/order/edit/:id" component={editOrder}></Route>
           <Route path="/order/orders/:id" component={orderView}></Route>
           
-
+          <Route path="/SignIn" component={SignIn}></Route>
 
           <Route path="/item/" exact component={itemHome}></Route>
           <Route path="/item/add" component={createItem}></Route>
