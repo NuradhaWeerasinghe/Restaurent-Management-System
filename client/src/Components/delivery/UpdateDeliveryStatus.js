@@ -151,7 +151,7 @@ export default class UpdateDeliveryStatus extends Component {
                 </div>
                 <div className="row">
                     <div className="col-5">
-                        <img src="/images/fooddriver.png" alt="delivery vehicle" style={{ height: '350px', width: '500px', marginTop: '100px' }} />
+                        <img src="/images/fooddriver.png" alt="delivery vehicle" style={{ height: '350px', width: '550px', marginTop: '150px' }} />
                     </div>
                     <div className="col-7">
                         <div className="shadowBox">

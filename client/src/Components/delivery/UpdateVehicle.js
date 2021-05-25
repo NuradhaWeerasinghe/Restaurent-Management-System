@@ -12,12 +12,14 @@ const formValid = formErrors => {
     return valid;
 };
 
+
 export default class UpdateVehicle extends Component{
 
     
     constructor(props){
         super(props);
         this.state={
+			drivers:[],	
             vehicleNo:"",
             modelName:"",
 			type:"",
@@ -47,14 +49,8 @@ export default class UpdateVehicle extends Component{
 					?"Please select the corect type"
 					:"";
 					break;
-					case "owner":
-						formErrors.owner =
-						value.length < 5 || value.length > 30
-						?"Name must have characters between 5 to 30"
-						:"";
-						break;
-							default:
-								break;
+						default:
+							break;
         }
         this.setState({formErrors,[name]: value},()=> console.log(this.state));			
         this.setState({
@@ -62,6 +58,17 @@ export default class UpdateVehicle extends Component{
             [name]:value
         });
     };
+
+    retrieveDrivers(){
+        axios.get("http://localhost:8000/display_driver").then(res =>{
+          if(res.data.success){
+            this.setState({
+              drivers:res.data.existingDrivers
+            });
+            console.log(this.state.drivers)
+          }
+        });
+      } 
 
     onSubmit = (e) =>{
         e.preventDefault();
@@ -99,6 +106,7 @@ export default class UpdateVehicle extends Component{
 
 
     componentDidMount(){
+		this.retrieveDrivers();
 		const id = this.props.match.params.id;
         axios.get(`http://localhost:8000/vehicle/${id}`).then((res)=>{
             if(res.data.success){
@@ -133,10 +141,10 @@ export default class UpdateVehicle extends Component{
                 </div>      				
 
 				<div className="row">
-					<div className="col-4">
-						<img src="/images/background.png" alt="delivery vehicle" style={{height:'250px' , width:'320px', marginTop:'100px'}}/>
+					<div className="col-5">
+						<img src="/images/background.png" alt="delivery vehicle" style={{height:'350px' , width:'420px', marginTop:'100px'}}/>
 					</div>
-					<div className="col-8">
+					<div className="col-7">
 						<div className="shadowBox">
 							<form onSubmit={this.onSubmit}>
 								<div className="form-row">
@@ -167,15 +175,15 @@ export default class UpdateVehicle extends Component{
 										)}
 									</div>									
 								</div>
-								<div className="form-row">
-									<div className="form-group col"  style={{marginTop:'15px'}}>
-										<label for="owner">Owner Name : </label>
-										<input type="text" className="form-control" id="owner" name="owner" placeholder="Enter owner name" value={this.state.owner} onChange={this.handleInputChange} required/>					  
-										{formErrors.owner.length > 5  &&(
-											<span style={{color:'red'}} className="errorMessage">{formErrors.owner}</span>
-										)}
-									</div>                        		
-								</div>
+                                <div className="form-group" style={{ marginTop: '15px' }}>
+                                    <label for="owner">Owner Name : </label>
+                                    <select id="owner" className="form-control" name="owner" onChange={this.handleInputChange} value={this.state.owner} disabled>
+                                    <option selected>Select driver</option>  
+                                    {this.state.drivers.map((drivers) => (
+                                        <option value={drivers.name} required>{drivers.name}</option>  
+                                    ))}
+                                    </select>
+                                </div>
 								<div className="form-row">
 									<div className="form-group col"  style={{marginTop:'15px'}}>
 										<label for="owner">Register Date : </label>

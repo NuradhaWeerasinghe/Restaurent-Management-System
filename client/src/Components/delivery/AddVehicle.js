@@ -14,7 +14,8 @@ export default class AddVehicle extends Component{
 	
     constructor(props){
         super(props);
-        this.state={			
+        this.state={	
+			drivers:[],		
             vehicleNo:"",
             modelName:"",
 			type:"",
@@ -35,8 +36,8 @@ export default class AddVehicle extends Component{
         switch(name){
             case "vehicleNo":
             formErrors.vehicleNo=
-            value.length < 5 || value.length > 5
-            ?"Minimum character must be 5"
+            value.length < 6 || value.length > 6
+            ?"Minimum character must be 6"
             :"";
             break;
 			case "modelName":
@@ -53,8 +54,8 @@ export default class AddVehicle extends Component{
 					break;
 					case "owner":
 						formErrors.owner =
-						value.length < 5 || value.length > 30
-						?"Name must have characters between 5 to 30"
+						value.length < 1
+						?"Please select the vehicle owner"
 						:"";
 						break;
 							default:
@@ -66,6 +67,21 @@ export default class AddVehicle extends Component{
             [name]:value
         });
     };
+
+	componentDidMount(){
+        this.retrieveDrivers();
+      }
+
+    retrieveDrivers(){
+        axios.get("http://localhost:8000/display_driver").then(res =>{
+          if(res.data.success){
+            this.setState({
+              drivers:res.data.existingDrivers
+            });
+            console.log(this.state.drivers)
+          }
+        });
+      } 	
 
 	onSubmit = (e) =>{
 		e.preventDefault();
@@ -118,17 +134,17 @@ export default class AddVehicle extends Component{
                 </div>      				
 
 				<div className="row">
-					<div className="col-4">
-						<img src="images/background.png" alt="delivery vehicle" style={{height:'250px' , width:'320px', marginTop:'100px'}}/>
+					<div className="col-5">
+						<img src="images/background.png" alt="delivery vehicle" style={{height:'350px' , width:'420px', marginTop:'100px'}}/>
 					</div>
-					<div className="col-8">
+					<div className="col-7">
 						<div className="shadowBox">
 							<form onSubmit={this.onSubmit}>
 								<div className="form-row">
 									<div className="form-group col" style={{marginTop:'15px'}}>
 										<label for="vnumber">Vehicle No : </label>
 										<input type="text" className="form-control" id="vNo" name="vehicleNo" placeholder="Enter vehicle number" value={this.state.vehicleNo} onChange={this.handleInputChange} required/>
-										{formErrors.vehicleNo.length < 5 ||formErrors.vehicleNo.length > 5   &&(
+										{formErrors.vehicleNo.length < 6 ||formErrors.vehicleNo.length > 6   &&(
 											<p style={{color:'red'}} className="errorMessage">{formErrors.vehicleNo}</p>
 										)}
 									</div>
@@ -155,15 +171,18 @@ export default class AddVehicle extends Component{
 										)}										
 									</div>									
 								</div>
-								<div className="form-row">
-									<div className="form-group col"  style={{marginTop:'15px'}}>
-										<label for="owner">Owner Name : </label>
-										<input type="text" className="form-control" id="owner" name="owner" placeholder="Enter owner name" value={this.state.owner} onChange={this.handleInputChange} required/>					  
-										{formErrors.owner.length > 5  &&(
+                                <div className="form-group" style={{ marginTop: '15px' }}>
+                                    <label for="owner">Owner Name : </label>
+                                    <select id="owner" className="form-control" name="owner" onChange={this.handleInputChange} value={this.state.owner} required>
+                                    <option selected>Select driver</option>  
+                                    {this.state.drivers.map((drivers) => (
+                                        <option value={drivers.name} required>{drivers.name}</option>  
+                                    ))}
+                                    </select>
+                                    {formErrors.owner.length < 1  &&(
 											<p style={{color:'red'}} className="errorMessage">{formErrors.owner}</p>
-										)}
-									</div>                        		
-								</div>
+										)} 
+                                </div>								
 								<div className="form-row">
 									<div className="form-group col"  style={{marginTop:'15px'}}>
 										<label for="owner">Register Date : </label>
