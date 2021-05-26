@@ -1,11 +1,11 @@
 /** SignIn page */
 
 body{
-    background-image: url(images/back.jpg);
+    /*background-image: url(images/back.jpg);*/
     background-size: cover;
 }
 
-.shadowBox{
+.shadowBoxLogin{
     margin-top: 40px;
     padding:30px;
     border-radius: 10px;
@@ -23,8 +23,9 @@ body{
     color: white;
 }
 
-label{
-    margin-bottom: 10px;
+.label{
+    margin-top: 10px;
+    margin-bottom: 5px;
     color: #ffff
 }
 
@@ -37,7 +38,7 @@ label{
     border-bottom: 2px solid white;
 }
 
-i{
+.icon{
     color: white;
     margin-top: 10px;
 }
@@ -48,9 +49,7 @@ i{
     background: none;
     color: white;
     font-size: 18px;
-    width: 80px;
     float: left;
-    margin-top: 5px;
 }
 
 .textbox input:focus{
@@ -59,11 +58,10 @@ i{
     background: none;
     color: white;
     font-size: 18px;
-    width: 80px;
     float: left;
-    margin-top: 5px;
     box-shadow: none;
-    
+    overflow: hidden;
+    size: 50%;
 }
 
 .textbox input::placeholder {
@@ -84,3 +82,4 @@ i{
     font-size: 20px;
     border-radius: 20px;
   }
+
