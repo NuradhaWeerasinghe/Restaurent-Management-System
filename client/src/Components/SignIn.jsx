@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import './signIn.css'
+import './signIn.css'
 
 
 const formValid = formErrors => {
@@ -62,40 +62,34 @@ export default class CreateBill extends Component {
                 <div className="row">
                     <div className="col-3"></div>
                     <div className="col-6">
-                        <div className="shadowBox">
+                        <div className="shadowBoxLogin">
                             <div className="row">
                                 <h3 className="h3">Sign In</h3>
                             </div>
                             <form>
                                 <div class="form-group textbox">
-                                    <label for="name">User Name : </label>
+                                    <label for="name" className="label">User Name : </label>
                                     <div class="input-group  position-relative">
                                         <div class="input-group-addon">
-                                            <i class="fas fa-user"></i> 
+                                            <i class="fas fa-user icon"></i> 
                                         </div>
                                         <input type="text" className="form-control" id="userName" name="userName" placeholder="Shelin Kula..." onChange={this.handleInputChange} required />
-                                            {formErrors.userName.length > 5 && (
-                                                <p style={{ color: 'red' }} className="errorMessage">{formErrors.userName}</p>
-                                            )}  
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="form-group textbox">
-                                    <label for="name">Password : </label>
+                                    <label for="name" className="label">Password : </label>
                                     <div class="input-group  position-relative">
                                         <div class="input-group-addon">
-                                            <i class="fas fa-key"></i>
+                                            <i class="fas fa-key icon"></i>
                                         </div>
                                         <input type="password" className="form-control position-relative" id="pass" name="pass" placeholder="************"  onChange={this.handleInputChange} required />
-                                        {formErrors.pass.length > 5 && (
-                                            <p style={{ color: 'red' }} className="errorMessage">{formErrors.pass}</p>
-                                        )}  
                                     </div>
-                                </div>                               
+                                </div>                                
                                 <div className="row">
                                     <div className="col-3"></div>
                                     <div className="form-group btndriver col-6">
                                         <div className="form-group signin" style={{ marginTop: '15px' }}>
-                                            <button type="submit" className="btn btn-outline-success" >Sign In</button>&nbsp;&nbsp;                                            
+                                            <button type="submit" className="btn btn-outline-success">Sign In</button>&nbsp;&nbsp;                                            
                                         </div>
                                     </div>
                                     <div className="col-3"></div>
