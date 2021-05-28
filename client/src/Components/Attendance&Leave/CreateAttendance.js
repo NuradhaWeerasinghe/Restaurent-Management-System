@@ -6,10 +6,10 @@ export default class CreateRecord extends Component{
     constructor(props){
         super(props);
         this.state={
-            leaveType:"",
-            from:Date,
-            to:Date,
-            reason:""
+            empID:"",
+            password:"",
+        aTime: new Date(),
+            type:""
         }
     }
     handleInputChange=(e)=>{
@@ -22,23 +22,24 @@ export default class CreateRecord extends Component{
 
 onSubmit = (e) =>{
     e.preventDefault();
-    const {leaveType,from,to,reason}=this.state;
+    const {type,empID,aTime,password}=this.state;
     const data ={
-        leaveType:leaveType,
-        from:from,
-        to:to,
-        reason:reason
+        empID:empID,
+        password:password,
+        aTime:aTime,
+        type:type
     }
     //console.log(data)
-    axios.post("http://localhost:8000/record/save",data).then((res)=>{
+    //database
+    axios.post("http://localhost:8000/attend/save",data).then((res)=>{
         if(res.data.success){
-            alert("Leave request successfully sent")
+            alert("Attendance marked successfully")
             this.setState(
                 {
-                    leaveType:"",
-                    from:Date,
-                    to:Date,
-                    reason:""
+                    empID:"",
+                    password:"",
+                    aTime:new Date(),
+                    type:""
                 }
             )
         };
@@ -58,45 +59,43 @@ onSubmit = (e) =>{
             }}
             
             >
-                <center><h1 className="h3 mb-3 font-weight-normal">Request a Leave</h1></center>
-                <form  >
+                <center><h1 className="h3 mb-3 font-weight-normal">Attendance</h1></center>
+                <form onSubmit={this.onSubmit} >
                 <div className="form-group col-4 position-relative" style={{marginTop:'15px'}}>
-	            <label for="type"> Leave Type : </label>
-	            <select id="type" className="form-control" name="leaveType" onChange={this.handleInputChange} value={this.state.leaveType} required>
-		            <option selected>Choose type...</option>
-		            <option value="CASUAL">Casual</option>
-		            <option value="MEDICAL">Medical</option>
-		            <option value="HALF-DAY">Half-Day</option>
+	            <label for="type"> Attendance Type : </label>
+	            <select id="type" className="form-control" name="type" onChange={this.handleInputChange} value={this.state.type} required>                    
+                    <option selected>Choose type</option>
+                    <option value="IN">IN</option>
+ 		            <option value="OUT">OUT</option>
 	            </select>       
                 </div>      
 
                 <div className="form-group" style={{marginBottom:'15px'}}>
-                <label style={{marginBottom:'5px'}}>From</label>
-                <input type="date"
+                <label style={{marginBottom:'5px'}}>Date and Time</label>
+                <input type="datetime-local"
+                readOnly
                 className="form-control"
-                name="from"
-                value={this.state.from}
+                name="aTime"
+                value={this.state.aTime}
                 onChange={this.handleInputChange}/>
                 </div>
 
                 <div className="form-group" style={{marginBottom:'15px'}}>
-                <label style={{marginBottom:'5px'}}>To</label>
-                <input type="date"
-                className="form-control"
-                name="to"
-                value={this.state.to}
-                onChange={this.handleInputChange}/>
-                </div>
-
-                <div className="form-group" style={{marginBottom:'15px'}}>
-                <label style={{marginBottom:'5px'}}>Reason</label>
+                <label style={{marginBottom:'5px'}}>Employee ID</label>
                 <input type="text"
                 className="form-control"
-                name="reason"
-                placeholder="Dear Mr./Ms.
+                name="empID"
+                value={this.state.empID}
+                onChange={this.handleInputChange}/>
+                </div>
 
-                I would like to formally request a leave for .............."
-                value={this.state.reason}
+                <div className="form-group" style={{marginBottom:'15px'}}>
+                <label style={{marginBottom:'5px'}}>Password</label>
+                <input type="password"
+                className="form-control"
+                name="password"
+                placeholder="Type your password...."
+                value={this.state.password}
                 onChange={this.handleInputChange}/>
                 </div>
 
@@ -106,3 +105,7 @@ onSubmit = (e) =>{
         );
     };
 };
+
+
+
+
