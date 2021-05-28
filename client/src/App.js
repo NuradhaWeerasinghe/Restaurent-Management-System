@@ -8,10 +8,10 @@ import AddEmployee from './Components/Employee/AddEmployee';
 import UpdateEmployee from './Components/Employee/UpdateEmployee';
 import GetSpecific from './Components/Employee/GetSpecific';
 
-import CreateAttendance from './Components/CreateAttendance';
-import CreateRecord from './Components/CreateRecord';
-import EditRecord from './Components/EditRecord';
-import RecordHome from './Components/RecordHome';
+import CreateAttendance from './Components/Attendance&Leave/CreateAttendance';
+import CreateRecord from './Components/Attendance&Leave/CreateRecord';
+import EditRecord from './Components/Attendance&Leave/EditRecord';
+import RecordHome from './Components/Attendance&Leave/RecordHome';
 /** delivery*/
 import AddDriver from './Components/delivery/AddDriver';
 import AddVehicle from './Components/delivery/AddVehicle';
@@ -63,7 +63,7 @@ import itemHome from './Components/items/itemHome';
 import itemView from './Components/items/itemView';
 
 import Footer from './Components/Footer/Footer';
-import AttendHome from './Components/AttendHome';
+import AttendHome from './Components/Attendance&Leave/AttendHome';
 
 import SignIn from './Components/SignIn'
 

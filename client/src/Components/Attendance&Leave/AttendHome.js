@@ -3,50 +3,50 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 
-export default class RecordHome extends Component{
+export default class AttendHome extends Component{
   constructor(props){
     super(props);
     this.state={
-      records:[]
+      attends:[]
     };
   }
 
   componentDidMount(){
-    this.retrieveRecords();
+    this.retrieveAttendence();
   }
 
-  retrieveRecords(){
-    axios.get("http://localhost:8000/records").then(res =>{
+  retrieveAttendence(){
+    axios.get("http://localhost:8000/attends").then(res =>{
       if(res.data.success){
         this.setState({
-          records:res.data.existingRecords
+          attends:res.data.existingAttends
         });
-        console.log(this.state.records)
+        console.log(this.state.attends)
       }
     });
   }
 
-onDelete=(id)=>{
-  axios.delete(`http://localhost:8000/record/delete/${id}`).then((res)=>{
-    alert("Record Deleted");
-    this.retrieveRecords();
-  })
-}
+// onDelete=(id)=>{
+//   axios.delete(`http://localhost:8000/record/delete/${id}`).then((res)=>{
+//     alert("Record Deleted");
+//     this.retrieveRecords();
+//   })
+// }
 
-filterData(records,searchKey){
-  const result=records.filter((record)=>
-  record.leaveType.toUpperCase().includes(searchKey)
-  
+filterData(attends,searchKey){
+  const result=attends.filter((attends)=>
+  attends.type.toUpperCase().includes(searchKey)||
+  attends.aTime.toLowerCase().includes(searchKey)
   )
-  this.setState({records:result})
+  this.setState({attends:result})
 }
 
 
 handleSearchArea=(e)=>{
   const searchKey=e.currentTarget.value;
-  axios.get("http://localhost:8000/records").then(res =>{
+  axios.get("http://localhost:8000/attends").then(res =>{
     if(res.data.success){
-      this.filterData(res.data.existingRecords,searchKey)
+      this.filterData(res.data.existingAttends,searchKey)
     }
   });
 
@@ -56,7 +56,7 @@ handleSearchArea=(e)=>{
       <div className="container">
         <div className="row">
           <div className="col-lg-9 mt-2 mb-2">
-            <h4>All Records</h4>
+            <h4>Attendance Records</h4>
             </div>
             <div className="col-lg-3 mt-2 mb-2">
               <input
@@ -74,34 +74,32 @@ handleSearchArea=(e)=>{
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Leave Type</th>
-      <th scope="col">From</th>
-      <th scope="col">To</th>
-      <th scope="col">Reason</th>
-      <th scope="col">Action</th>
+      <th scope="col">Employ ID</th>
+      <th scope="col">Date and Time</th>
+      <th scope="col">Attend Type</th>
+   
     </tr>
   </thead>
   <tbody>
-    {this.state.records.map((records,index)=>(
+    {this.state.attends.map((attends,index)=>(
       <tr key={index}>
         <th scope="row">{index+1}</th>
-        <td><a href={`/record/${records._id}`} style={{textDecoration:'none'}}>{records.leaveType}</a></td>
-        <td>{records.from}</td>
-        <td>{records.to}</td>
-        <td>{records.reason}</td>
-        <td><Link className ="btn btn-outline-primary" to={`/edit_R/${records._id}`}>
+        <td><a href={`/record/${attends._id}`} style={{textDecoration:'none'}}>{attends.empID}</a></td>
+        <td>{attends.type}</td>
+        <td>{attends.aTime}</td>
+        {/* <td><Link className ="btn btn-outline-primary" to={`/edit_R/${records._id}`}>
           <i className="fas fa-edit"></i>&nbsp;Edit
           </Link>
           &nbsp;
           <Link className ="btn btn-danger" href="#" onClick={()=>this.onDelete(records._id)}>
           <i className="fas fa-trash-alt"></i>&nbsp;Delete
           </Link>
-          </td>
+          </td> */}
       </tr>
     ))}
   </tbody>
 </table>
-<Link to="/add_R" className="btn btn-warning"><i class="fas fa-user-plus"></i>&nbsp;Request a Leave</Link>
+<Link to="/attend" className="btn btn-warning"><i class="fas fa-user-plus"></i>&nbsp;Attend</Link>
 
       </div>
     )
